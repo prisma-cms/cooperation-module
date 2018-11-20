@@ -9,3 +9,25 @@ type TaskResponse{
 input TaskCreateManyWithoutProjectInput {
   connect: [TaskWhereUniqueInput!]
 }
+
+input TaskCreateInput {
+  name: String!
+  description: String
+  content: Json
+  status: TaskStatus
+  startDatePlaning: DateTime
+  endDatePlaning: DateTime
+  startDate: DateTime
+  endDate: DateTime
+  Project: ProjectCreateOneWithoutTasksInput!
+  Parent: TaskCreateOneWithoutChildsInput
+  Childs: TaskCreateManyWithoutParentInput
+}
+
+input TaskCreateOneWithoutChildsInput { 
+  connect: TaskWhereUniqueInput
+}
+
+input TaskCreateManyWithoutParentInput {
+  connect: [TaskWhereUniqueInput!]
+}

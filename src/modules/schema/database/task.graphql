@@ -24,7 +24,7 @@ type Task {
   updatedAt: DateTime!
   name: String!
   description: String
-  content: Json!
+  content: Json
   status: TaskStatus! @default(value: New)
   Project: Project! @relation(name: "ProjectTasks")
   CreatedBy: User! @relation(name: "UserCreatedTasks")

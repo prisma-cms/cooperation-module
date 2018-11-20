@@ -13,3 +13,8 @@ input ProjectCreateInput {
   Members: ProjectMemberCreateManyInput
   Tasks: TaskCreateManyWithoutProjectInput
 }
+
+
+input ProjectCreateOneWithoutTasksInput {
+  connect: ProjectWhereUniqueInput!
+}

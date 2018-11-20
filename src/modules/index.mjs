@@ -8,6 +8,7 @@ import UserModule from "@prisma-cms/user-module";
 import LogModule from "@prisma-cms/log-module";
 
 import ProjectModule from "./project";
+import TaskModule from "./task";
 
 import MergeSchema from 'merge-graphql-schemas';
 
@@ -34,6 +35,7 @@ class Module extends PrismaModule {
       UserModule,
       LogModule,
       ProjectModule,
+      TaskModule,
     ]);
 
   }
@@ -74,6 +76,10 @@ class Module extends PrismaModule {
       "ProjectMemberCreateManyInput",
       "ProjectCreateInput",
       "TaskCreateManyWithoutProjectInput",
+      "TaskCreateInput",
+      "ProjectCreateOneWithoutTasksInput",
+      "TaskCreateOneWithoutChildsInput",
+      "TaskCreateManyWithoutParentInput",
     ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {
