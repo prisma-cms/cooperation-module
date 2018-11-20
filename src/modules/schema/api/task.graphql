@@ -1,0 +1,11 @@
+
+type TaskResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: Task
+}
+
+input TaskCreateManyWithoutProjectInput {
+  connect: [TaskWhereUniqueInput!]
+}

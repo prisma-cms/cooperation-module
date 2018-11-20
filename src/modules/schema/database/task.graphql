@@ -1,0 +1,39 @@
+
+enum TaskStatus {
+  New
+  Accepted
+  Rejected
+  Progress
+  Done
+  Discuss
+  Approved
+  RevisionsRequired
+  Completed
+}
+
+
+"""
+Проект не обязательный, чтобы не было необходимости указывать для 
+дочернего задания проект.
+Отмена. Такой подход затруднит получение данных о задачах на различном уровне вложенности
+"""
+
+type Task {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String
+  content: Json!
+  status: TaskStatus! @default(value: New)
+  Project: Project! @relation(name: "ProjectTasks")
+  CreatedBy: User! @relation(name: "UserCreatedTasks")
+  Parent: Task @relation(name: "Tasks")
+  Childs: [Task!]! @relation(name: "Tasks")
+  startDatePlaning: DateTime
+  endDatePlaning: DateTime
+  startDate: DateTime
+  endDate: DateTime
+
+  Timers: [Timer!]! @relation(name: "TaskTimers")
+}

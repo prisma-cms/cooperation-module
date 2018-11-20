@@ -1,0 +1,15 @@
+
+
+type ProjectResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: Project
+}
+
+input ProjectCreateInput {
+  name: String!
+  description: String
+  Members: ProjectMemberCreateManyInput
+  Tasks: TaskCreateManyWithoutProjectInput
+}

@@ -1,0 +1,34 @@
+
+type Error {
+  key: String!
+  message: String!
+}
+
+
+
+type Mutation {
+   
+ 
+  createProjectProcessor(
+    data: ProjectCreateInput!
+  ): ProjectResponse!
+
+  createTaskProcessor(
+    data: TaskCreateInput!
+  ): TaskResponse
+ 
+  updateTaskProcessor(
+    data: TaskUpdateInput!
+    where: TaskWhereUniqueInput!
+  ): TaskResponse 
+
+  createTimerProcessor(
+    data: TimerCreateInput!
+  ): TimerResponse
+
+  updateTimerProcessor(
+    data: TimerUpdateInput!
+    where: TimerWhereUniqueInput!
+  ): TimerResponse
+
+}

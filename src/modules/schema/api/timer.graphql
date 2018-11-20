@@ -1,0 +1,7 @@
+
+type TimerResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: Timer
+}

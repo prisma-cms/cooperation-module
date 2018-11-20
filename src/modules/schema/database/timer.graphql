@@ -1,0 +1,8 @@
+
+type Timer {
+  id: ID! @unique
+  createdAt: DateTime!
+  stopedAt: DateTime
+  CreatedBy: User! @relation(name: "TimerCreatedBy")
+  Task: Task! @relation(name: "TaskTimers")
+}

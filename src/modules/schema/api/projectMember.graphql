@@ -1,0 +1,4 @@
+
+input ProjectMemberCreateManyInput {
+  connect: [ProjectMemberWhereUniqueInput!]
+}

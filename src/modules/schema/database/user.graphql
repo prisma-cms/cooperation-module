@@ -1,0 +1,8 @@
+
+type User {
+  id: ID! @unique
+  Teams: [TeamMember!]! @relation(name: "TeamMemberUser")
+  TeamsCreated: [Team!]! @relation(name: "UserTeamsCreated")
+  Projects: [ProjectMember!]! @relation(name: "ProjectMemberUser")
+  ProjectsCreated: [Project!]! @relation(name: "ProjectCreatedBy")
+}

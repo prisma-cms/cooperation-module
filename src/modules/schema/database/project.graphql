@@ -1,0 +1,29 @@
+
+type Project {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String
+  Members: [ProjectMember!]! @relation(name: "ProjectMembers")
+  CreatedBy: User! @relation(name: "ProjectCreatedBy")
+  Tasks: [Task!]! @relation(name: "ProjectTasks")
+}
+
+
+# enum ProjectRole{
+#   Owner
+#   Member
+#   Viewer
+# }
+
+
+
+type ProjectMember{
+  id: ID! @unique
+  # role: ProjectRole! @default(value: Member)
+  Project: Project! @relation(name: "ProjectMemberProject")
+  User: User! @relation(name: "ProjectMemberUser")
+  CreatedBy: User! @relation(name: "ProjectMemberCreatedBy")
+}
+ 

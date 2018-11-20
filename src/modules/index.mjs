@@ -4,6 +4,10 @@ import fs from "fs";
 import chalk from "chalk";
 
 import PrismaModule from "@prisma-cms/prisma-module";
+import UserModule from "@prisma-cms/user-module";
+import LogModule from "@prisma-cms/log-module";
+
+import ProjectModule from "./project";
 
 import MergeSchema from 'merge-graphql-schemas';
 
@@ -26,8 +30,11 @@ class Module extends PrismaModule {
 
     super(props);
 
-    Object.assign(this, {
-    });
+    this.mergeModules([
+      UserModule,
+      LogModule,
+      ProjectModule,
+    ]);
 
   }
 
@@ -63,7 +70,11 @@ class Module extends PrismaModule {
       baseSchema = fs.readFileSync(schemaFile, "utf-8");
     }
 
-    let apiSchema = super.getApiSchema(types.concat(baseSchema), []);
+    let apiSchema = super.getApiSchema(types.concat(baseSchema), [
+      "ProjectMemberCreateManyInput",
+      "ProjectCreateInput",
+      "TaskCreateManyWithoutProjectInput",
+    ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {
       recursive: true,

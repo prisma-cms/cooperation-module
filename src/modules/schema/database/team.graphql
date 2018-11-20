@@ -1,0 +1,9 @@
+
+type Team {
+  id: ID! @unique
+  name: String!
+  Parent: Team @relation(name: "Teams")
+  Childs: [Team!]! @relation(name: "Teams")
+  CreatedBy: User! @relation(name: "UserTeamsCreated")
+  Members: [TeamMember!]! @relation(name: "TeamMembers")
+}

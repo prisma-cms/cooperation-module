@@ -1,0 +1,15 @@
+
+type TeamMember {
+  id: ID! @unique
+  Team: Team! @relation(name: "TeamMembers")
+  User: User! @relation(name: "TeamMemberUser")
+  CreatedBy: User! @relation(name: "TeamMembersCreatedBy")
+  status: TeamMemberStatus! @value(default: Active)
+}
+
+enum TeamMemberStatus {
+  Invited
+  Active
+  Fired
+  Quit
+}

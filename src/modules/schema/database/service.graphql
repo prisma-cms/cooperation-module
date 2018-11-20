@@ -1,0 +1,7 @@
+
+type Service {
+  id: ID! @unique
+  name: String! @unique
+  CreatedBy: User! @relation(name: "ServiceCreatedBy")
+}
+ 
