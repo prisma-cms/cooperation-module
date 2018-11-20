@@ -47,6 +47,26 @@ class Module extends PrismaModule {
       TimerModule,
     ]);
 
+    this.Subscription = {
+      project: {
+        subscribe: async (parent, args, ctx, info) => {
+
+          return ctx.db.subscription.project({}, info);
+        },
+      },
+      task: {
+        subscribe: async (parent, args, ctx, info) => {
+
+          return ctx.db.subscription.task({}, info);
+        },
+      },
+      timer: {
+        subscribe: async (parent, args, ctx, info) => {
+
+          return ctx.db.subscription.timer({}, info);
+        },
+      },
+    }
   }
 
 

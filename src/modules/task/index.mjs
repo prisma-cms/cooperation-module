@@ -118,6 +118,7 @@ class TaskModule extends PrismaModule {
 
     Object.assign(resolvers.Mutation, {
       createTaskProcessor: this.createTaskProcessor.bind(this),
+      updateTaskProcessor: this.updateTaskProcessor.bind(this),
     });
 
     // Object.assign(resolvers.Subscription, this.Subscription);
@@ -155,6 +156,11 @@ class TaskModule extends PrismaModule {
   createTaskProcessor(source, args, ctx, info) {
 
     return this.getProcessor(ctx).createWithResponse("Task", args, info);
+  }
+
+  updateTaskProcessor(source, args, ctx, info) {
+
+    return this.getProcessor(ctx).updateWithResponse("Task", args, info);
   }
 
   TaskResponse() {

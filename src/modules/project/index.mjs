@@ -118,6 +118,7 @@ class ProjectModule extends PrismaModule {
 
     Object.assign(resolvers.Mutation, {
       createProjectProcessor: this.createProjectProcessor.bind(this),
+      updateProjectProcessor: this.updateProjectProcessor.bind(this),
     });
 
     // Object.assign(resolvers.Subscription, this.Subscription);
@@ -155,6 +156,11 @@ class ProjectModule extends PrismaModule {
   createProjectProcessor(source, args, ctx, info) {
 
     return this.getProcessor(ctx).createWithResponse("Project", args, info);
+  }
+
+  updateProjectProcessor(source, args, ctx, info) {
+
+    return this.getProcessor(ctx).updateWithResponse("Project", args, info);
   }
 
   ProjectResponse() {

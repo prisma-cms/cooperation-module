@@ -159,6 +159,7 @@ class TimerModule extends PrismaModule {
 
     Object.assign(resolvers.Mutation, {
       createTimerProcessor: this.createTimerProcessor.bind(this),
+      updateTimerProcessor: this.updateTimerProcessor.bind(this),
     });
 
     // Object.assign(resolvers.Subscription, this.Subscription);
@@ -196,6 +197,11 @@ class TimerModule extends PrismaModule {
   createTimerProcessor(source, args, ctx, info) {
 
     return this.getProcessor(ctx).createWithResponse("Timer", args, info);
+  }
+
+  updateTimerProcessor(source, args, ctx, info) {
+
+    return this.getProcessor(ctx).updateWithResponse("Timer", args, info);
   }
 
   TimerResponse() {

@@ -13,22 +13,27 @@ type Mutation {
     data: ProjectCreateInput!
   ): ProjectResponse!
 
+  updateProjectProcessor(
+    data: ProjectUpdateInput!
+    where: ProjectWhereUniqueInput!
+  ): ProjectResponse!
+
   createTaskProcessor(
     data: TaskCreateInput!
-  ): TaskResponse
+  ): TaskResponse!
  
   updateTaskProcessor(
     data: TaskUpdateInput!
     where: TaskWhereUniqueInput!
-  ): TaskResponse 
+  ): TaskResponse !
 
   createTimerProcessor(
     data: TimerCreateInput!
-  ): TimerResponse
+  ): TimerResponse!
 
   updateTimerProcessor(
     data: TimerUpdateInput!
     where: TimerWhereUniqueInput!
-  ): TimerResponse
+  ): TimerResponse!
 
 }
