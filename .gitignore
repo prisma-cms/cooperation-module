@@ -6,3 +6,4 @@
 /umd
 *.log*
 *.lock
+/uploads

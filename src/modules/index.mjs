@@ -6,6 +6,9 @@ import chalk from "chalk";
 import PrismaModule from "@prisma-cms/prisma-module";
 import UserModule from "@prisma-cms/user-module";
 import LogModule from "@prisma-cms/log-module";
+import RouterModule from "@prisma-cms/router-module";
+import MailModule from "@prisma-cms/mail-module";
+import UploadModule from "@prisma-cms/upload-module";
 
 import ProjectModule from "./project";
 import TaskModule from "./task";
@@ -35,6 +38,10 @@ class Module extends PrismaModule {
     this.mergeModules([
       UserModule,
       LogModule,
+      RouterModule,
+      MailModule,
+      UploadModule,
+
       ProjectModule,
       TaskModule,
       TimerModule,
@@ -85,7 +92,7 @@ class Module extends PrismaModule {
       "TimerCreateInput",
       "TaskCreateOneWithoutTimersInput",
       "TaskCreateManyWithoutRelatedFromInput",
-      "TaskCreateOneWithoutRelatedToInput",
+      "TaskCreateManyWithoutRelatedToInput",
     ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {

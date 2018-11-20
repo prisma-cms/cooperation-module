@@ -32,7 +32,7 @@ type Task {
   Childs: [Task!]! @relation(name: "Tasks")
 
   """Задача, от короторой зависит текущая задача (может быть из других проектов)"""
-  RelatedFrom: Task @relation(name: "RelatedTasks")
+  RelatedFrom: [Task!]! @relation(name: "RelatedTasks")
   """Задачи, зависящие от текущей задачи"""
   RelatedTo: [Task!]! @relation(name: "RelatedTasks")
 

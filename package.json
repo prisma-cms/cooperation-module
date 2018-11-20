@@ -17,6 +17,9 @@
     "@prisma-cms/prisma-module": "latest",
     "@prisma-cms/user-module": "latest",
     "@prisma-cms/log-module": "latest",
+    "@prisma-cms/router-module": "latest",
+    "@prisma-cms/upload-module": "latest",
+    "@prisma-cms/mail-module": "latest",
     "chalk": "^2.4.1",
     "merge-graphql-schemas": "latest"
   },
