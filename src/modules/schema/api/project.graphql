@@ -16,5 +16,5 @@ input ProjectCreateInput {
 
 
 input ProjectCreateOneWithoutTasksInput {
-  connect: ProjectWhereUniqueInput!
+  connect: ProjectWhereUniqueInput
 }

@@ -84,6 +84,8 @@ class Module extends PrismaModule {
       "TaskCreateManyWithoutParentInput",
       "TimerCreateInput",
       "TaskCreateOneWithoutTimersInput",
+      "TaskCreateManyWithoutRelatedFromInput",
+      "TaskCreateOneWithoutRelatedToInput",
     ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {

@@ -144,6 +144,8 @@ const requiredTypes = [
         "Project",
         "Parent",
         "Childs",
+        "RelatedTo",
+        "RelatedFrom",
         "startDatePlaning",
         "endDatePlaning",
         "startDate",

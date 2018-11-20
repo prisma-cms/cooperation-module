@@ -22,6 +22,8 @@ input TaskCreateInput {
   Project: ProjectCreateOneWithoutTasksInput!
   Parent: TaskCreateOneWithoutChildsInput
   Childs: TaskCreateManyWithoutParentInput
+  RelatedTo: TaskCreateManyWithoutRelatedFromInput
+  RelatedFrom: TaskCreateOneWithoutRelatedToInput
 }
 
 input TaskCreateOneWithoutChildsInput { 
@@ -36,3 +38,12 @@ input TaskCreateManyWithoutParentInput {
 input TaskCreateOneWithoutTimersInput {
   connect: TaskWhereUniqueInput
 }
+
+input TaskCreateManyWithoutRelatedFromInput {
+  connect: [TaskWhereUniqueInput!]
+}
+
+input TaskCreateOneWithoutRelatedToInput {
+  connect: TaskWhereUniqueInput
+}
+
