@@ -31,3 +31,8 @@ input TaskCreateOneWithoutChildsInput {
 input TaskCreateManyWithoutParentInput {
   connect: [TaskWhereUniqueInput!]
 }
+
+
+input TaskCreateOneWithoutTimersInput {
+  connect: TaskWhereUniqueInput
+}

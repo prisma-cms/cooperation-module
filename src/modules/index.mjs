@@ -9,6 +9,7 @@ import LogModule from "@prisma-cms/log-module";
 
 import ProjectModule from "./project";
 import TaskModule from "./task";
+import TimerModule from "./timer";
 
 import MergeSchema from 'merge-graphql-schemas';
 
@@ -36,6 +37,7 @@ class Module extends PrismaModule {
       LogModule,
       ProjectModule,
       TaskModule,
+      TimerModule,
     ]);
 
   }
@@ -80,6 +82,8 @@ class Module extends PrismaModule {
       "ProjectCreateOneWithoutTasksInput",
       "TaskCreateOneWithoutChildsInput",
       "TaskCreateManyWithoutParentInput",
+      "TimerCreateInput",
+      "TaskCreateOneWithoutTimersInput",
     ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {
