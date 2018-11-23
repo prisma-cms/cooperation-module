@@ -29,7 +29,7 @@ const requiredTypes = [
         "TeamsCreated",
         "Projects",
         "ProjectsCreated",
-        // "Subordinates",
+        "Timers",
       ],
       prisma: [
       ],
@@ -151,6 +151,23 @@ const requiredTypes = [
         "startDate",
         "endDate",
         "Timers",
+        "Members",
+      ],
+      prisma: [
+      ],
+      api: [
+      ],
+    },
+  },
+  {
+    name: "TaskMember",
+    fields: {
+      both: [
+        "id",
+        "CreatedBy",
+        "Task",
+        "User",
+        "status",
       ],
       prisma: [
       ],

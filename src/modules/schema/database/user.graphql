@@ -6,4 +6,6 @@ type User {
   TeamsCreated: [Team!]! @relation(name: "UserTeamsCreated")
   Projects: [ProjectMember!]! @relation(name: "ProjectMemberUser")
   ProjectsCreated: [Project!]! @relation(name: "ProjectCreatedBy")
+  Tasks: [TaskMember!]! @relation(name: "TaskMemberUser")
+  Timers: [Timer!]! @relation(name: "TimerCreatedBy")
 }
