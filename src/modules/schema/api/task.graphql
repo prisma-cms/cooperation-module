@@ -47,3 +47,54 @@ input TaskCreateManyWithoutRelatedToInput {
   connect: [TaskWhereUniqueInput!]
 }
 
+input TaskCreateOneWithoutMembersInput {
+  connect: TaskWhereUniqueInput
+}
+
+input TaskUpdateManyWithoutProjectInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+}
+
+input TaskUpdateOneWithoutTimersInput {
+  connect: TaskWhereUniqueInput
+}
+
+input TaskUpdateOneWithoutMembersInput {
+  connect: TaskWhereUniqueInput
+}
+
+input TaskMemberUpdateManyWithoutTaskInput {
+  connect: [TaskMemberWhereUniqueInput!]
+  disconnect: [TaskMemberWhereUniqueInput!]
+}
+
+input TaskMemberUpdateManyWithoutTaskInput {
+  connect: [TaskMemberWhereUniqueInput!]
+  disconnect: [TaskMemberWhereUniqueInput!]
+}
+
+input TaskUpdateOneWithoutChildsInput {
+  connect: TaskWhereUniqueInput
+  disconnect: Boolean
+}
+
+input TaskUpdateManyWithoutParentInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+}
+
+input TaskUpdateManyWithoutRelatedToInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+}
+
+input TaskUpdateManyWithoutRelatedFromInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+}
+
+input TimerUpdateManyWithoutTaskInput {
+  connect: [TimerWhereUniqueInput!]
+  disconnect: [TimerWhereUniqueInput!]
+}

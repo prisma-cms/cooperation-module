@@ -18,3 +18,15 @@ input ProjectCreateInput {
 input ProjectCreateOneWithoutTasksInput {
   connect: ProjectWhereUniqueInput
 }
+
+input ProjectCreateOneInput {
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectUpdateOneInput {
+  connect: ProjectWhereUniqueInput
+}
+
+input  ProjectUpdateOneWithoutTasksInput {
+  connect: ProjectWhereUniqueInput
+}

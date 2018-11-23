@@ -1,0 +1,9 @@
+
+input ServiceCreateOneInput {
+  connect: ServiceWhereUniqueInput
+}
+
+input ServiceUpdateOneInput {
+  connect: ServiceWhereUniqueInput
+  disconnect: Boolean
+}
