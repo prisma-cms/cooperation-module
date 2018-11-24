@@ -6,4 +6,13 @@ type Team {
   Childs: [Team!]! @relation(name: "Teams")
   CreatedBy: User! @relation(name: "UserTeamsCreated")
   Members: [TeamMember!]! @relation(name: "TeamMembers")
+  Projects: [Project!]! @relation(name: "TeamProjects")
+  status: TeamStatus! @default(value: Active)
 }
+
+
+enum TeamStatus {
+  Active
+  Inactive
+}
+

@@ -5,3 +5,8 @@ type TimerResponse{
   errors: [Error!]!
   data: Timer
 }
+
+input TimerCreateInput {
+  stopedAt: DateTime
+  Task: TaskCreateOneWithoutTimersInput!
+}

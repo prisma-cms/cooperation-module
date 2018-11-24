@@ -1,0 +1,18 @@
+
+input ServiceCreateOneInput {
+  connect: ServiceWhereUniqueInput
+}
+
+input ServiceUpdateOneInput {
+  connect: ServiceWhereUniqueInput
+  disconnect: Boolean
+}
+
+
+type ServiceResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: Service
+}
+

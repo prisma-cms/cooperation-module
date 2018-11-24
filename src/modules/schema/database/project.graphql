@@ -5,9 +5,10 @@ type Project {
   updatedAt: DateTime!
   name: String!
   description: String
-  Members: [ProjectMember!]! @relation(name: "ProjectMembers")
+  Members: [ProjectMember!]! @relation(name: "ProjectMemberProject")
   CreatedBy: User! @relation(name: "ProjectCreatedBy")
   Tasks: [Task!]! @relation(name: "ProjectTasks")
+  Team: Team @relation(name: "TeamProjects")
 }
 
 

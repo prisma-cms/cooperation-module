@@ -1,31 +1,7 @@
 
-input TeamCreateOneWithoutChildsInput {
-  connect: TeamWhereUniqueInput
+type TeamResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: Team
 }
-
-input TeamCreateManyWithoutParentInput {
-  connect: [TeamWhereUniqueInput!]
-}
-
-input TeamCreateOneWithoutMembersInput { 
-  connect: TeamWhereUniqueInput
-}
-
-input TeamUpdateOneWithoutMembersInput {
-  connect: TeamWhereUniqueInput
-}
-
-input TeamMemberUpdateManyWithoutTeamInput {
-  connect: [TeamMemberWhereUniqueInput!]
-  disconnect: [TeamMemberWhereUniqueInput!]
-}
-
-input TeamUpdateManyWithoutParentInput {
-  connect: [TeamWhereUniqueInput!]
-  disconnect: [TeamWhereUniqueInput!]
-}
-
-input TeamUpdateOneWithoutChildsInput {
-  connect: TeamWhereUniqueInput
-  disconnect: Boolean
-} 

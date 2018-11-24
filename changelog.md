@@ -1,3 +1,11 @@
+1.4.0
+===============================
+- Added service resolvers
+- Added team resolvers
+- Fix ProjectMembers relation
+- Added ProjectTeam relation
+- Added Team::status
+
 1.3.1
 ===============================
 - Cleanup inputs

@@ -1,0 +1,32 @@
+
+
+type ProjectResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: Project
+}
+
+input ProjectCreateInput {
+  name: String!
+  description: String
+  Members: ProjectMemberCreateManyInput
+  Tasks: TaskCreateManyWithoutProjectInput
+}
+
+
+input ProjectCreateOneWithoutTasksInput {
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectCreateOneInput {
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectUpdateOneInput {
+  connect: ProjectWhereUniqueInput
+}
+
+input  ProjectUpdateOneWithoutTasksInput {
+  connect: ProjectWhereUniqueInput
+}

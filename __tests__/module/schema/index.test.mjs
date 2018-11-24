@@ -47,6 +47,8 @@ const requiredTypes = [
         "Childs",
         "Members",
         "CreatedBy",
+        "Projects",
+        "status",
       ],
       prisma: [
       ],
@@ -78,6 +80,7 @@ const requiredTypes = [
         "id",
         "name",
         "CreatedBy",
+        "Projects",
       ],
       prisma: [
       ],
@@ -108,7 +111,7 @@ const requiredTypes = [
         "CreatedBy",
         "Tasks",
         "Members",
-        // "Teams",
+        "Team",
       ],
       prisma: [
       ],
@@ -125,7 +128,7 @@ const requiredTypes = [
         "Project",
         "User",
         // "Post",
-        "Service",
+        "Services",
         "status",
       ],
       prisma: [

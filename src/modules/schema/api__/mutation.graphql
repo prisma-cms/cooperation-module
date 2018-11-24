@@ -36,15 +36,6 @@ type Mutation {
     where: TimerWhereUniqueInput!
   ): TimerResponse!
 
-  createTeamProcessor(
-    data: TeamCreateInput!
-  ): TeamResponse!
-
-  updateTeamProcessor(
-    data: TeamUpdateInput!
-    where: TeamWhereUniqueInput!
-  ): TeamResponse!
-
   createServiceProcessor(
     data: ServiceCreateInput!
   ): ServiceResponse!

@@ -1,0 +1,100 @@
+
+type TaskResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: Task
+}
+
+input TaskCreateManyWithoutProjectInput {
+  connect: [TaskWhereUniqueInput!]
+}
+
+input TaskCreateInput {
+  name: String!
+  description: String
+  content: Json
+  status: TaskStatus
+  startDatePlaning: DateTime
+  endDatePlaning: DateTime
+  startDate: DateTime
+  endDate: DateTime
+  Project: ProjectCreateOneWithoutTasksInput!
+  Parent: TaskCreateOneWithoutChildsInput
+  Childs: TaskCreateManyWithoutParentInput
+  RelatedFrom: TaskCreateManyWithoutRelatedToInput
+  RelatedTo: TaskCreateManyWithoutRelatedFromInput
+}
+
+input TaskCreateOneWithoutChildsInput { 
+  connect: TaskWhereUniqueInput
+}
+
+input TaskCreateManyWithoutParentInput {
+  connect: [TaskWhereUniqueInput!]
+}
+
+
+input TaskCreateOneWithoutTimersInput {
+  connect: TaskWhereUniqueInput
+}
+
+input TaskCreateManyWithoutRelatedFromInput {
+  connect: [TaskWhereUniqueInput!]
+}
+
+input TaskCreateManyWithoutRelatedToInput {
+  connect: [TaskWhereUniqueInput!]
+}
+
+input TaskCreateOneWithoutMembersInput {
+  connect: TaskWhereUniqueInput
+}
+
+input TaskUpdateManyWithoutProjectInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+}
+
+input TaskUpdateOneWithoutTimersInput {
+  connect: TaskWhereUniqueInput
+}
+
+input TaskUpdateOneWithoutMembersInput {
+  connect: TaskWhereUniqueInput
+}
+
+input TaskMemberUpdateManyWithoutTaskInput {
+  connect: [TaskMemberWhereUniqueInput!]
+  disconnect: [TaskMemberWhereUniqueInput!]
+}
+
+input TaskMemberUpdateManyWithoutTaskInput {
+  connect: [TaskMemberWhereUniqueInput!]
+  disconnect: [TaskMemberWhereUniqueInput!]
+}
+
+input TaskUpdateOneWithoutChildsInput {
+  connect: TaskWhereUniqueInput
+  disconnect: Boolean
+}
+
+input TaskUpdateManyWithoutParentInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+}
+
+input TaskUpdateManyWithoutRelatedToInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+}
+
+input TaskUpdateManyWithoutRelatedFromInput {
+  connect: [TaskWhereUniqueInput!]
+  disconnect: [TaskWhereUniqueInput!]
+}
+
+input TimerUpdateManyWithoutTaskInput {
+  connect: [TimerWhereUniqueInput!]
+  disconnect: [TimerWhereUniqueInput!]
+}

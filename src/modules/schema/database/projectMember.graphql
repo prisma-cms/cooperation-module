@@ -4,7 +4,7 @@ type ProjectMember {
   CreatedBy: User! @relation(name: "ProjectMemberCreatedBy")
   Project: User! @relation(name: "ProjectMemberProject")
   User: User! @relation(name: "ProjectMemberUser")
-  Service: Service @relation(name: "ProjectMemberService")
+  Services: [Service!]! @relation(name: "ProjectMemberServices")
   status: ProjectMemberStatus! @value(default: Active)
 }
 
