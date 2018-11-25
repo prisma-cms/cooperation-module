@@ -14,6 +14,8 @@ export class ProjectProcessor extends PrismaProcessor {
 
     this.objectType = "Project";
 
+    this.private = true;
+
   }
 
 

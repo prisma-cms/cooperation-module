@@ -1,7 +1,7 @@
 {
   "name": "@prisma-cms/cooperation-module",
   "description": "Cooperation module for @prisma-cms/server",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "main": "src/",
   "files": [
     "src"
@@ -20,6 +20,7 @@
     "@prisma-cms/router-module": "latest",
     "@prisma-cms/upload-module": "latest",
     "@prisma-cms/mail-module": "latest",
+    "@prisma-cms/prisma-processor": "latest",
     "chalk": "^2.4.1",
     "merge-graphql-schemas": "latest"
   },

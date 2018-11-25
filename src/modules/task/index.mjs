@@ -14,6 +14,8 @@ export class TaskProcessor extends PrismaProcessor {
 
     this.objectType = "Task";
 
+    this.private = true;
+
   }
 
 

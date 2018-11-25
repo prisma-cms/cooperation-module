@@ -14,6 +14,8 @@ export class TimerProcessor extends PrismaProcessor {
 
     this.objectType = "Timer";
 
+    this.private = true;
+
   }
 
 

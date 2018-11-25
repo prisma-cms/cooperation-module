@@ -14,6 +14,8 @@ export class TeamProcessor extends PrismaProcessor {
 
     this.objectType = "Team";
 
+    this.private = true;
+
   }
 
 
