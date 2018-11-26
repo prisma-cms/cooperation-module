@@ -1,3 +1,7 @@
+1.4.2
+===============================
+- Fix ProjectMember relation
+
 1.4.1
 ===============================
 - Set types as private

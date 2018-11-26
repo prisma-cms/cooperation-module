@@ -17,14 +17,3 @@ type Project {
 #   Member
 #   Viewer
 # }
-
-
-
-type ProjectMember{
-  id: ID! @unique
-  # role: ProjectRole! @default(value: Member)
-  Project: Project! @relation(name: "ProjectMemberProject")
-  User: User! @relation(name: "ProjectMemberUser")
-  CreatedBy: User! @relation(name: "ProjectMemberCreatedBy")
-}
- 
