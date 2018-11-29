@@ -4,6 +4,7 @@ enum TaskStatus {
   Accepted
   Rejected
   Progress
+  Paused
   Done
   Discuss
   Approved

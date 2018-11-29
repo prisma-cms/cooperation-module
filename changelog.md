@@ -1,3 +1,8 @@
+1.4.3
+===============================
+- Set Task status Progress on create Timer
+- Added Task status Paused
+
 1.4.2
 ===============================
 - Fix ProjectMember relation

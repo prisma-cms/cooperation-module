@@ -7,3 +7,20 @@ type ProjectResponse{
   data: Project
 }
 
+
+input ProjectCreateInput {
+  name: String!
+  description: String
+  Members: ProjectMemberCreateManyWithoutProjectInput
+  Tasks: TaskCreateManyWithoutProjectInput
+  Team: TeamCreateOneWithoutProjectsInput
+}
+
+
+input ProjectUpdateInput {
+  name: String
+  description: String
+  Members: ProjectMemberUpdateManyWithoutProjectInput
+  Tasks: TaskUpdateManyWithoutProjectInput
+  Team: TeamUpdateOneWithoutProjectsInput
+}

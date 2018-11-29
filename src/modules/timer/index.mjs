@@ -84,13 +84,72 @@ export class TimerProcessor extends PrismaProcessor {
     }
 
 
+    // if(Task){
+    //   Object.assign(Task, {
+
+    //   });
+    // }
+
 
     Object.assign(args, {
       data,
     });
 
 
-    return super.create(method, args, info);
+    let result = await super.create(method, args, info);
+
+    const {
+      id: timerId,
+    } = result || {}
+
+
+    if (timerId) {
+      let Timer = await this.query("timer", {
+        where: {
+          id: timerId,
+        },
+      }, `{
+        id
+        Task{
+          id
+          status
+        }
+      }`);
+
+      if(Timer){
+
+        const {
+          id: taskId,
+          status: taskStatus,
+        } = Timer.Task || {};
+        
+        if(taskStatus && ["New", "Paused"].indexOf(taskStatus) !== -1){
+          await db.mutation.updateTask({
+            where: {
+              id: taskId,
+            },
+            data: {
+              status: "Accepted",
+            },
+          });
+          await db.mutation.updateTask({
+            where: {
+              id: taskId,
+            },
+            data: {
+              status: "Progress",
+            },
+          });
+        }
+
+      }
+      // console.log("Timer", Timer);
+
+    }
+
+
+
+    return result;
   }
 
 
