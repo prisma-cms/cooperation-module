@@ -1,7 +1,7 @@
 
 type Service {
   id: ID! @unique
-  name: String! @unique
+  name: String!
   CreatedBy: User! @relation(name: "ServiceCreatedBy")
   Projects: [ProjectMember!]! @relation(name: "ProjectMemberServices")
 }

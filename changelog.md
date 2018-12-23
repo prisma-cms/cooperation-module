@@ -1,3 +1,7 @@
+1.4.4
+===============================
+- Service::name became not unique
+
 1.4.3
 ===============================
 - Set Task status Progress on create Timer
