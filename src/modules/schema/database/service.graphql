@@ -2,7 +2,11 @@
 type Service {
   id: ID! @unique
   name: String!
+  description: String
+  code: ID @unique
   CreatedBy: User! @relation(name: "ServiceCreatedBy")
   Projects: [ProjectMember!]! @relation(name: "ProjectMemberServices")
+  Parent: Service @relation(name: "Services")
+  Childs: [Service!]! @relation(name: "Services")
 }
  

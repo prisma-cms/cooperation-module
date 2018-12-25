@@ -53,6 +53,12 @@ class Module extends PrismaModule {
     ]);
 
     this.Subscription = {
+      team: {
+        subscribe: async (parent, args, ctx, info) => {
+
+          return ctx.db.subscription.team({}, info);
+        },
+      },
       project: {
         subscribe: async (parent, args, ctx, info) => {
 

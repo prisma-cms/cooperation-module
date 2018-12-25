@@ -48,42 +48,7 @@ export class TeamProcessor extends PrismaProcessor {
     Object.assign(data, {
       ...CreatedBy,
     });
-
-
-    /**
-     * Получаем и завершаем запущенные таски, если имеются
-     */
-    const activeTeams = await db.query.teams({
-      where: {
-        CreatedBy: {
-          id: currentUserId,
-        },
-        stopedAt: null,
-      },
-    });
-
-
-    if (activeTeams && activeTeams.length) {
-
-      activeTeams.map(async ({ id }) => {
-
-        const args = {
-          where: {
-            id,
-          },
-          data: {
-            stopedAt: new Date(),
-          }
-        };
-
-        // await this.mutate("updateTeam", args);
-        await db.mutation.updateTeam(args);
-
-      });
-
-    }
-
-
+    
 
     Object.assign(args, {
       data,

@@ -1,3 +1,10 @@
+1.4.5
+===============================
+- Added Service::Parent
+- Added Service::code
+- Added team subscribe
+- Fix create Team
+
 1.4.4
 ===============================
 - Service::name became not unique
