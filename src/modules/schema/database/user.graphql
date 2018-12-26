@@ -8,4 +8,6 @@ type User {
   ProjectsCreated: [Project!]! @relation(name: "ProjectCreatedBy")
   Tasks: [TaskMember!]! @relation(name: "TaskMemberUser")
   Timers: [Timer!]! @relation(name: "TimerCreatedBy")
+  PositionsCreated: [Position!]! @relation(name: "PositionCreatedBy")
+  Positions: [Position!]! @relation(name: "PositionUsers")
 }

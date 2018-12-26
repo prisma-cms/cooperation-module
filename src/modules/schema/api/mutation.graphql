@@ -45,6 +45,15 @@ type Mutation {
     where: TeamWhereUniqueInput!
   ): TeamResponse!
 
+  createTeamMemberProcessor(
+    data: TeamMemberCreateInput!
+  ): TeamMemberResponse!
+
+  updateTeamMemberProcessor(
+    data: TeamMemberUpdateInput!
+    where: TeamMemberWhereUniqueInput!
+  ): TeamMemberResponse!
+
   createServiceProcessor(
     data: ServiceCreateInput!
   ): ServiceResponse!
@@ -53,5 +62,14 @@ type Mutation {
     data: ServiceUpdateInput!
     where: ServiceWhereUniqueInput!
   ): ServiceResponse!
+
+  createPositionProcessor(
+    data: PositionCreateInput!
+  ): PositionResponse!
+
+  updatePositionProcessor(
+    data: PositionUpdateInput!
+    where: PositionWhereUniqueInput!
+  ): PositionResponse!
 
 }

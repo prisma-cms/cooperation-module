@@ -1,0 +1,38 @@
+
+
+type PositionResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: Position
+}
+
+
+input PositionCreateInput {
+  code: ID
+  name: String!
+  # CreatedBy: UserCreateOneWithoutPositionsCreatedInput!
+  Users: UserCreateManyWithoutPositionsInput
+}
+
+
+input PositionUpdateInput {
+  code: ID
+  name: String
+  # CreatedBy: UserUpdateOneWithoutPositionsCreatedInput
+  Users: UserUpdateManyWithoutPositionsInput
+}
+
+input UserCreateManyWithoutPositionsInput {
+  # create: [UserCreateWithoutPositionsInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserUpdateManyWithoutPositionsInput {
+  # create: [UserCreateWithoutPositionsInput!]
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  # delete: [UserWhereUniqueInput!]
+  # update: [UserUpdateWithWhereUniqueWithoutPositionsInput!]
+  # upsert: [UserUpsertWithWhereUniqueWithoutPositionsInput!]
+}

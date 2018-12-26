@@ -1,3 +1,8 @@
+1.4.6
+===============================
+- Added resolvers
+- Cleanup schema
+
 1.4.5
 ===============================
 - Added Service::Parent

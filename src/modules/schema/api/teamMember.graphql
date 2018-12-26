@@ -1,0 +1,31 @@
+
+type TeamMemberResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: TeamMember
+}
+
+input TeamMemberCreateInput {
+  status: TeamMemberStatus = Active
+  Team: TeamCreateOneWithoutMembersInput!
+  User: UserCreateOneWithoutTeamsInput!
+  # CreatedBy: UserCreateOneInput!
+}
+
+input TeamMemberUpdateInput {
+  status: TeamMemberStatus
+  # Team: TeamUpdateOneWithoutMembersInput
+  # User: UserUpdateOneWithoutTeamsInput
+  # CreatedBy: UserUpdateOneInput
+}
+
+input TeamCreateOneWithoutMembersInput {
+  # create: TeamCreateWithoutMembersInput
+  connect: TeamWhereUniqueInput
+}
+
+input UserCreateOneWithoutTeamsInput {
+  # create: UserCreateWithoutTeamsInput
+  connect: UserWhereUniqueInput
+}

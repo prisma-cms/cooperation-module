@@ -1,7 +1,7 @@
 {
   "name": "@prisma-cms/cooperation-module",
   "description": "Cooperation module for @prisma-cms/server",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "main": "src/",
   "files": [
     "src"
@@ -29,7 +29,7 @@
     "expect": "^23.6.0",
     "graphql": "*",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.5"
+    "nodemon": "latest"
   },
   "resolutions": {
     "graphql": "*"

@@ -1,0 +1,7 @@
+type Position {
+  id: ID! @unique
+  code: ID @unique
+  name: String!
+  CreatedBy: User! @relation(name: "PositionCreatedBy")
+  Users: [User!]! @relation(name: "PositionUsers")
+}

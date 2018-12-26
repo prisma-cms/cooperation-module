@@ -11,5 +11,4 @@ enum TeamMemberStatus {
   Invited
   Active
   Fired
-  Quit
 }

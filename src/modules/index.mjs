@@ -15,7 +15,9 @@ import ProjectModule from "./project";
 import TaskModule from "./task";
 import TimerModule from "./timer";
 import TeamModule from "./team";
+import TeamMemberModule from "./teamMember";
 import ServiceModule from "./service";
+import PositionModule from "./position";
 
 import MergeSchema from 'merge-graphql-schemas';
 
@@ -49,7 +51,9 @@ class Module extends PrismaModule {
       TaskModule,
       TimerModule,
       TeamModule,
+      TeamMemberModule,
       ServiceModule,
+      PositionModule,
     ]);
 
     this.Subscription = {
@@ -106,7 +110,7 @@ class Module extends PrismaModule {
 
     let baseSchema = [];
 
-    let schemaFile = "src/schema/generated/prisma.graphql";
+    let schemaFile = __dirname + "/../schema/generated/prisma.graphql";
 
     if (fs.existsSync(schemaFile)) {
       baseSchema = fs.readFileSync(schemaFile, "utf-8");
@@ -119,6 +123,27 @@ class Module extends PrismaModule {
       "TaskUpdateInput",
       "TimerCreateInput",
       "TimerUpdateInput",
+
+      "TeamCreateInput",
+      "TeamUpdateInput",
+      "TeamCreateOneWithoutChildsInput",
+      "TeamCreateManyWithoutParentInput",
+      "TeamMemberCreateManyWithoutTeamInput",
+      "ProjectCreateManyWithoutTeamInput",
+      "TeamUpdateOneWithoutChildsInput",
+      "TeamUpdateManyWithoutParentInput",
+      "TeamMemberUpdateManyWithoutTeamInput",
+      "ProjectUpdateManyWithoutTeamInput",
+
+      "TeamMemberCreateInput",
+      "TeamMemberUpdateInput",
+      "TeamCreateOneWithoutMembersInput",
+      "UserCreateOneWithoutTeamsInput",
+
+      "PositionCreateInput",
+      "PositionUpdateInput",
+      "UserCreateManyWithoutPositionsInput",
+      "UserUpdateManyWithoutPositionsInput",
     ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {
