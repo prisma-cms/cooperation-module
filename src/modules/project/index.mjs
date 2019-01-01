@@ -135,15 +135,15 @@ class ProjectModule extends PrismaModule {
 
 
   projects(source, args, ctx, info) {
-    return ctx.db.query.projects({}, info);
+    return ctx.db.query.projects(args, info);
   }
 
   project(source, args, ctx, info) {
-    return ctx.db.query.project({}, info);
+    return ctx.db.query.project(args, info);
   }
 
   projectsConnection(source, args, ctx, info) {
-    return ctx.db.query.projectsConnection({}, info);
+    return ctx.db.query.projectsConnection(args, info);
   }
 
 

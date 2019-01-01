@@ -235,15 +235,15 @@ class TimerModule extends PrismaModule {
 
 
   timers(source, args, ctx, info) {
-    return ctx.db.query.timers({}, info);
+    return ctx.db.query.timers(args, info);
   }
 
   timer(source, args, ctx, info) {
-    return ctx.db.query.timer({}, info);
+    return ctx.db.query.timer(args, info);
   }
 
   timersConnection(source, args, ctx, info) {
-    return ctx.db.query.timersConnection({}, info);
+    return ctx.db.query.timersConnection(args, info);
   }
 
 

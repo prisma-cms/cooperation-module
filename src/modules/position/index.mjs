@@ -141,15 +141,15 @@ class PositionModule extends PrismaModule {
 
 
   positions(source, args, ctx, info) {
-    return ctx.db.query.positions({}, info);
+    return ctx.db.query.positions(args, info);
   }
 
   position(source, args, ctx, info) {
-    return ctx.db.query.position({}, info);
+    return ctx.db.query.position(args, info);
   }
 
   positionsConnection(source, args, ctx, info) {
-    return ctx.db.query.positionsConnection({}, info);
+    return ctx.db.query.positionsConnection(args, info);
   }
 
 

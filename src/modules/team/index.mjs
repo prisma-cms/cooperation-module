@@ -141,15 +141,15 @@ class TeamModule extends PrismaModule {
 
 
   teams(source, args, ctx, info) {
-    return ctx.db.query.teams({}, info);
+    return ctx.db.query.teams(args, info);
   }
 
   team(source, args, ctx, info) {
-    return ctx.db.query.team({}, info);
+    return ctx.db.query.team(args, info);
   }
 
   teamsConnection(source, args, ctx, info) {
-    return ctx.db.query.teamsConnection({}, info);
+    return ctx.db.query.teamsConnection(args, info);
   }
 
 

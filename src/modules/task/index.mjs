@@ -135,15 +135,15 @@ class TaskModule extends PrismaModule {
 
 
   tasks(source, args, ctx, info) {
-    return ctx.db.query.tasks({}, info);
+    return ctx.db.query.tasks(args, info);
   }
 
   task(source, args, ctx, info) {
-    return ctx.db.query.task({}, info);
+    return ctx.db.query.task(args, info);
   }
 
   tasksConnection(source, args, ctx, info) {
-    return ctx.db.query.tasksConnection({}, info);
+    return ctx.db.query.tasksConnection(args, info);
   }
 
 

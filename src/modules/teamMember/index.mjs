@@ -197,15 +197,15 @@ class TeamMemberModule extends PrismaModule {
 
 
   teamMembers(source, args, ctx, info) {
-    return ctx.db.query.teamMembers({}, info);
+    return ctx.db.query.teamMembers(args, info);
   }
 
   teamMember(source, args, ctx, info) {
-    return ctx.db.query.teamMember({}, info);
+    return ctx.db.query.teamMember(args, info);
   }
 
   teamMembersConnection(source, args, ctx, info) {
-    return ctx.db.query.teamMembersConnection({}, info);
+    return ctx.db.query.teamMembersConnection(args, info);
   }
 
 

@@ -133,15 +133,15 @@ class ServiceModule extends PrismaModule {
 
 
   services(source, args, ctx, info) {
-    return ctx.db.query.services({}, info);
+    return ctx.db.query.services(args, info);
   }
 
   service(source, args, ctx, info) {
-    return ctx.db.query.service({}, info);
+    return ctx.db.query.service(args, info);
   }
 
   servicesConnection(source, args, ctx, info) {
-    return ctx.db.query.servicesConnection({}, info);
+    return ctx.db.query.servicesConnection(args, info);
   }
 
 
