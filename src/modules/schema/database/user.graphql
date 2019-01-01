@@ -1,7 +1,6 @@
 
 type User {
   id: ID! @unique
-  files: [File!]! @relation(name: "UserFiles")
   Teams: [TeamMember!]! @relation(name: "TeamMemberUser")
   TeamsCreated: [Team!]! @relation(name: "UserTeamsCreated")
   Projects: [ProjectMember!]! @relation(name: "ProjectMemberUser")
