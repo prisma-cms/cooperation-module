@@ -1,3 +1,7 @@
+1.4.9
+===============================
+- Make TeamMember not required
+
 1.4.8
 ===============================
 - Fix default args query
