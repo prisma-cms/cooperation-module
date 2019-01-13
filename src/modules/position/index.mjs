@@ -134,6 +134,15 @@ class PositionModule extends PrismaModule {
 
     Object.assign(resolvers, {
       PositionResponse: this.PositionResponse(),
+
+      Subscription: {
+        position: {
+          subscribe: async (parent, args, ctx, info) => {
+  
+            return ctx.db.subscription.position({}, info);
+          },
+        },
+      },
     });
 
     return resolvers;

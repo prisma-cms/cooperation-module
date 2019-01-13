@@ -1,0 +1,47 @@
+
+type ProjectMemberResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: ProjectMember
+}
+
+input ProjectMemberCreateInput {
+  status: ProjectMemberStatus = Active
+  Project: ProjectCreateOneWithoutMembersInput!
+  User: UserCreateOneWithoutProjectsInput!
+  # CreatedBy: UserCreateOneInput!
+  Services: ServiceCreateManyWithoutProjectsInput
+}
+
+input ProjectMemberUpdateInput {
+  status: ProjectMemberStatus
+  # Project: ProjectUpdateOneWithoutMembersInput
+  # User: UserUpdateOneWithoutProjectsInput
+  # CreatedBy: UserUpdateOneInput
+  Services: ServiceUpdateManyWithoutProjectsInput
+}
+
+input ProjectCreateOneWithoutMembersInput {
+  # create: ProjectCreateWithoutMembersInput
+  connect: ProjectWhereUniqueInput
+}
+
+input UserCreateOneWithoutProjectsInput {
+  # create: UserCreateWithoutProjectsInput
+  connect: UserWhereUniqueInput
+}
+
+input ServiceCreateManyWithoutProjectsInput {
+  # create: [ServiceCreateWithoutProjectsInput!]
+  connect: [ServiceWhereUniqueInput!]
+}
+
+input ServiceUpdateManyWithoutProjectsInput {
+  # create: [ServiceCreateWithoutProjectsInput!]
+  connect: [ServiceWhereUniqueInput!]
+  disconnect: [ServiceWhereUniqueInput!]
+  # delete: [ServiceWhereUniqueInput!]
+  # update: [ServiceUpdateWithWhereUniqueWithoutProjectsInput!]
+  # upsert: [ServiceUpsertWithWhereUniqueWithoutProjectsInput!]
+}

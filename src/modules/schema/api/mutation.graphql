@@ -18,6 +18,15 @@ type Mutation {
     where: ProjectWhereUniqueInput!
   ): ProjectResponse!
 
+  createProjectMemberProcessor(
+    data: ProjectMemberCreateInput!
+  ): ProjectMemberResponse!
+
+  updateProjectMemberProcessor(
+    data: ProjectMemberUpdateInput!
+    where: ProjectMemberWhereUniqueInput!
+  ): ProjectMemberResponse!
+
   createTaskProcessor(
     data: TaskCreateInput!
   ): TaskResponse!

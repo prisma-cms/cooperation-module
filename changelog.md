@@ -1,3 +1,9 @@
+1.4.10
+===============================
+- Added Service::rank
+- Added ProjectMember
+- Added subscriptions
+
 1.4.9
 ===============================
 - Make TeamMember not required

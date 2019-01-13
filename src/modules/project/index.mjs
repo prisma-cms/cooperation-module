@@ -128,6 +128,15 @@ class ProjectModule extends PrismaModule {
 
     Object.assign(resolvers, {
       ProjectResponse: this.ProjectResponse(),
+
+      Subscription: {
+        project: {
+          subscribe: async (parent, args, ctx, info) => {
+  
+            return ctx.db.subscription.project({}, info);
+          },
+        },
+      },
     });
 
     return resolvers;

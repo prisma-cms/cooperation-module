@@ -228,6 +228,15 @@ class TimerModule extends PrismaModule {
 
     Object.assign(resolvers, {
       TimerResponse: this.TimerResponse(),
+
+      Subscription: {
+        timer: {
+          subscribe: async (parent, args, ctx, info) => {
+  
+            return ctx.db.subscription.timer({}, info);
+          },
+        },
+      },
     });
 
     return resolvers;

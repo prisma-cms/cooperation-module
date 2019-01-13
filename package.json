@@ -1,7 +1,7 @@
 {
   "name": "@prisma-cms/cooperation-module",
   "description": "Cooperation module for @prisma-cms/server",
-  "version": "1.4.9",
+  "version": "1.4.10",
   "main": "src/",
   "files": [
     "src"

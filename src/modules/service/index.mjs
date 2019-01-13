@@ -126,6 +126,15 @@ class ServiceModule extends PrismaModule {
 
     Object.assign(resolvers, {
       ServiceResponse: this.ServiceResponse(),
+
+      Subscription: {
+        service: {
+          subscribe: async (parent, args, ctx, info) => {
+  
+            return ctx.db.subscription.service({}, info);
+          },
+        },
+      },
     });
 
     return resolvers;

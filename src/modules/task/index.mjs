@@ -128,6 +128,15 @@ class TaskModule extends PrismaModule {
 
     Object.assign(resolvers, {
       TaskResponse: this.TaskResponse(),
+
+      Subscription: {
+        task: {
+          subscribe: async (parent, args, ctx, info) => {
+  
+            return ctx.db.subscription.task({}, info);
+          },
+        },
+      },
     });
 
     return resolvers;

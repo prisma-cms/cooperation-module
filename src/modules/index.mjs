@@ -12,6 +12,7 @@ import MailModule from "@prisma-cms/mail-module";
 import UploadModule from "@prisma-cms/upload-module";
 
 import ProjectModule from "./project";
+import ProjectMemberModule from "./projectMember";
 import TaskModule from "./task";
 import TimerModule from "./timer";
 import TeamModule from "./team";
@@ -48,6 +49,7 @@ class Module extends PrismaModule {
       UploadModule,
 
       ProjectModule,
+      ProjectMemberModule,
       TaskModule,
       TimerModule,
       TeamModule,
@@ -57,30 +59,6 @@ class Module extends PrismaModule {
     ]);
 
     this.Subscription = {
-      team: {
-        subscribe: async (parent, args, ctx, info) => {
-
-          return ctx.db.subscription.team({}, info);
-        },
-      },
-      project: {
-        subscribe: async (parent, args, ctx, info) => {
-
-          return ctx.db.subscription.project({}, info);
-        },
-      },
-      task: {
-        subscribe: async (parent, args, ctx, info) => {
-
-          return ctx.db.subscription.task({}, info);
-        },
-      },
-      timer: {
-        subscribe: async (parent, args, ctx, info) => {
-
-          return ctx.db.subscription.timer({}, info);
-        },
-      },
     }
   }
 
@@ -123,6 +101,13 @@ class Module extends PrismaModule {
       "TaskUpdateInput",
       "TimerCreateInput",
       "TimerUpdateInput",
+
+      "ProjectMemberCreateInput",
+      "ProjectMemberUpdateInput",
+      "ProjectCreateOneWithoutMembersInput",
+      "UserCreateOneWithoutProjectsInput",
+      "ServiceCreateManyWithoutProjectsInput",
+      "ServiceUpdateManyWithoutProjectsInput",
 
       "TeamCreateInput",
       "TeamUpdateInput",

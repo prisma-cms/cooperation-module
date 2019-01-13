@@ -134,6 +134,15 @@ class TeamModule extends PrismaModule {
 
     Object.assign(resolvers, {
       TeamResponse: this.TeamResponse(),
+
+      Subscription: {
+        team: {
+          subscribe: async (parent, args, ctx, info) => {
+  
+            return ctx.db.subscription.team({}, info);
+          },
+        },
+      },
     });
 
     return resolvers;

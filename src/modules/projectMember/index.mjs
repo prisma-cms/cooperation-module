@@ -6,13 +6,13 @@ import PrismaModule from "@prisma-cms/prisma-module";
 import PrismaProcessor from "@prisma-cms/prisma-processor";
 
 
-export class TeamMemberProcessor extends PrismaProcessor {
+export class ProjectMemberProcessor extends PrismaProcessor {
 
   constructor(props) {
 
     super(props);
 
-    this.objectType = "TeamMember";
+    this.objectType = "ProjectMember";
 
     this.private = true;
 
@@ -144,7 +144,7 @@ export class TeamMemberProcessor extends PrismaProcessor {
       return this.addError("Не было получено условие проверки пользователя");
     }
 
-    const exists = await db.exists.TeamMember({
+    const exists = await db.exists.ProjectMember({
       Team: {
         ...teamWhere,
       },
@@ -165,7 +165,7 @@ export class TeamMemberProcessor extends PrismaProcessor {
 
 
 
-class TeamMemberModule extends PrismaModule {
+class ProjectMemberModule extends PrismaModule {
 
 
   getResolvers() {
@@ -174,28 +174,29 @@ class TeamMemberModule extends PrismaModule {
 
 
     Object.assign(resolvers.Query, {
-      teamMember: this.teamMember,
-      teamMembers: this.teamMembers,
-      teamMembersConnection: this.teamMembersConnection,
+      projectMember: this.projectMember,
+      projectMembers: this.projectMembers,
+      projectMembersConnection: this.projectMembersConnection,
     });
 
 
     Object.assign(resolvers.Mutation, {
-      createTeamMemberProcessor: this.createTeamMemberProcessor.bind(this),
-      updateTeamMemberProcessor: this.updateTeamMemberProcessor.bind(this),
+      createProjectMemberProcessor: this.createProjectMemberProcessor.bind(this),
+      updateProjectMemberProcessor: this.updateProjectMemberProcessor.bind(this),
     });
 
     // Object.assign(resolvers.Subscription, this.Subscription);
 
 
     Object.assign(resolvers, {
-      TeamMemberResponse: this.TeamMemberResponse(),
+      ProjectMemberResponse: this.ProjectMemberResponse(),
+
 
       Subscription: {
-        teamMember: {
+        projectMember: {
           subscribe: async (parent, args, ctx, info) => {
   
-            return ctx.db.subscription.teamMember({}, info);
+            return ctx.db.subscription.projectMember({}, info);
           },
         },
       },
@@ -205,16 +206,16 @@ class TeamMemberModule extends PrismaModule {
   }
 
 
-  teamMembers(source, args, ctx, info) {
-    return ctx.db.query.teamMembers(args, info);
+  projectMembers(source, args, ctx, info) {
+    return ctx.db.query.projectMembers(args, info);
   }
 
-  teamMember(source, args, ctx, info) {
-    return ctx.db.query.teamMember(args, info);
+  projectMember(source, args, ctx, info) {
+    return ctx.db.query.projectMember(args, info);
   }
 
-  teamMembersConnection(source, args, ctx, info) {
-    return ctx.db.query.teamMembersConnection(args, info);
+  projectMembersConnection(source, args, ctx, info) {
+    return ctx.db.query.projectMembersConnection(args, info);
   }
 
 
@@ -223,20 +224,20 @@ class TeamMemberModule extends PrismaModule {
   }
 
   getProcessorClass() {
-    return TeamMemberProcessor;
+    return ProjectMemberProcessor;
   }
 
-  createTeamMemberProcessor(source, args, ctx, info) {
+  createProjectMemberProcessor(source, args, ctx, info) {
 
-    return this.getProcessor(ctx).createWithResponse("TeamMember", args, info);
+    return this.getProcessor(ctx).createWithResponse("ProjectMember", args, info);
   }
 
-  updateTeamMemberProcessor(source, args, ctx, info) {
+  updateProjectMemberProcessor(source, args, ctx, info) {
 
-    return this.getProcessor(ctx).updateWithResponse("TeamMember", args, info);
+    return this.getProcessor(ctx).updateWithResponse("ProjectMember", args, info);
   }
 
-  TeamMemberResponse() {
+  ProjectMemberResponse() {
 
     return {
       data: (source, args, ctx, info) => {
@@ -245,7 +246,7 @@ class TeamMemberModule extends PrismaModule {
           id,
         } = source.data || {};
 
-        return id ? ctx.db.query.teamMember({
+        return id ? ctx.db.query.projectMember({
           where: {
             id,
           },
@@ -257,4 +258,4 @@ class TeamMemberModule extends PrismaModule {
 }
 
 
-export default TeamMemberModule;
+export default ProjectMemberModule;

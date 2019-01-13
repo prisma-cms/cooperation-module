@@ -11,7 +11,7 @@ input TeamCreateInput {
   Parent: TeamCreateOneWithoutChildsInput
   Childs: TeamCreateManyWithoutParentInput
   # CreatedBy: UserCreateOneWithoutTeamsCreatedInput!
-  Members: TeamMemberCreateManyWithoutTeamInput
+  # Members: TeamMemberCreateManyWithoutTeamInput
   Projects: ProjectCreateManyWithoutTeamInput
 }
 
@@ -21,7 +21,7 @@ input TeamUpdateInput {
   Parent: TeamUpdateOneWithoutChildsInput
   Childs: TeamUpdateManyWithoutParentInput
   # CreatedBy: UserUpdateOneWithoutTeamsCreatedInput
-  Members: TeamMemberUpdateManyWithoutTeamInput
+  # Members: TeamMemberUpdateManyWithoutTeamInput
   Projects: ProjectUpdateManyWithoutTeamInput
 }
 
