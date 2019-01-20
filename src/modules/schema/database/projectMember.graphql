@@ -5,7 +5,7 @@ type ProjectMember {
   Project: Project! @relation(name: "ProjectMemberProject")
   User: User! @relation(name: "ProjectMemberUser")
   Services: [Service!]! @relation(name: "ProjectMemberServices")
-  status: ProjectMemberStatus! @value(default: Active)
+  status: ProjectMemberStatus @value(default: Active)
 }
 
 enum ProjectMemberStatus {

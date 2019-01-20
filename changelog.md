@@ -1,3 +1,7 @@
+1.4.12
+===============================
+- ProjectMember::status net required any more
+
 1.4.11
 ===============================
 - Added deleteTeamMember()
