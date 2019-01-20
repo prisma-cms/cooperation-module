@@ -1,3 +1,8 @@
+1.4.11
+===============================
+- Added deleteTeamMember()
+- Added deleteProjectMember()
+
 1.4.10
 ===============================
 - Added Service::rank

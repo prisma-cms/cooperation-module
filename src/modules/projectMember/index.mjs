@@ -183,6 +183,7 @@ class ProjectMemberModule extends PrismaModule {
     Object.assign(resolvers.Mutation, {
       createProjectMemberProcessor: this.createProjectMemberProcessor.bind(this),
       updateProjectMemberProcessor: this.updateProjectMemberProcessor.bind(this),
+      deleteProjectMember: this.deleteProjectMember.bind(this),
     });
 
     // Object.assign(resolvers.Subscription, this.Subscription);
@@ -235,6 +236,11 @@ class ProjectMemberModule extends PrismaModule {
   updateProjectMemberProcessor(source, args, ctx, info) {
 
     return this.getProcessor(ctx).updateWithResponse("ProjectMember", args, info);
+  }
+
+  deleteProjectMember(source, args, ctx, info) {
+
+    return this.getProcessor(ctx).delete("ProjectMember", args, info);
   }
 
   ProjectMemberResponse() {

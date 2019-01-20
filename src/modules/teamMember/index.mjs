@@ -183,6 +183,7 @@ class TeamMemberModule extends PrismaModule {
     Object.assign(resolvers.Mutation, {
       createTeamMemberProcessor: this.createTeamMemberProcessor.bind(this),
       updateTeamMemberProcessor: this.updateTeamMemberProcessor.bind(this),
+      deleteTeamMember: this.deleteTeamMember.bind(this),
     });
 
     // Object.assign(resolvers.Subscription, this.Subscription);
@@ -194,7 +195,7 @@ class TeamMemberModule extends PrismaModule {
       Subscription: {
         teamMember: {
           subscribe: async (parent, args, ctx, info) => {
-  
+
             return ctx.db.subscription.teamMember({}, info);
           },
         },
@@ -234,6 +235,11 @@ class TeamMemberModule extends PrismaModule {
   updateTeamMemberProcessor(source, args, ctx, info) {
 
     return this.getProcessor(ctx).updateWithResponse("TeamMember", args, info);
+  }
+
+  deleteTeamMember(source, args, ctx, info) {
+
+    return this.getProcessor(ctx).delete("TeamMember", args, info);
   }
 
   TeamMemberResponse() {
