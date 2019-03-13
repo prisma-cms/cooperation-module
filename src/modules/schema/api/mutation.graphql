@@ -36,6 +36,15 @@ type Mutation {
     where: TaskWhereUniqueInput!
   ): TaskResponse !
 
+  createTaskReactionProcessor(
+    data: TaskReactionCreateInput!
+  ): TaskReactionResponse!
+ 
+  updateTaskReactionProcessor(
+    data: TaskReactionUpdateInput!
+    where: TaskReactionWhereUniqueInput!
+  ): TaskReactionResponse !
+
   createTimerProcessor(
     data: TimerCreateInput!
   ): TimerResponse!

@@ -1,0 +1,13 @@
+
+enum TaskReactionType {
+  UpVote
+}
+
+type TaskReaction {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  CreatedBy: User
+  Task: Task!
+  type: TaskReactionType
+}

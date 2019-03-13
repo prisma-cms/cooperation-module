@@ -1,0 +1,35 @@
+
+type TaskReactionResponse{
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: TaskReaction
+}
+
+
+input TaskReactionCreateInput {
+  type: TaskReactionType
+  # CreatedBy: UserCreateOneWithoutTasksReactionsInput
+  Task: TaskCreateOneInput!
+}
+
+
+input TaskReactionUpdateInput {
+  type: TaskReactionType
+  # CreatedBy: UserUpdateOneWithoutTasksReactionsInput
+  Task: TaskUpdateOneInput
+}
+
+
+input TaskCreateOneInput {
+  # create: TaskCreateInput
+  connect: TaskWhereUniqueInput
+}
+
+input TaskUpdateOneInput {
+  # create: TaskCreateInput
+  connect: TaskWhereUniqueInput
+  # delete: Boolean
+  # update: TaskUpdateDataInput
+  # upsert: TaskUpsertNestedInput
+}

@@ -1,3 +1,7 @@
+1.5.0
+===============================
+- Added TaskReaction
+
 1.4.12
 ===============================
 - ProjectMember::status net required any more

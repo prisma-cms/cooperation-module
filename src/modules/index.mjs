@@ -14,6 +14,7 @@ import UploadModule from "@prisma-cms/upload-module";
 import ProjectModule from "./project";
 import ProjectMemberModule from "./projectMember";
 import TaskModule from "./task";
+import TaskReactionModule from "./taskReaction";
 import TimerModule from "./timer";
 import TeamModule from "./team";
 import TeamMemberModule from "./teamMember";
@@ -51,6 +52,7 @@ class Module extends PrismaModule {
       ProjectModule,
       ProjectMemberModule,
       TaskModule,
+      TaskReactionModule,
       TimerModule,
       TeamModule,
       TeamMemberModule,
@@ -101,6 +103,11 @@ class Module extends PrismaModule {
       "TaskUpdateInput",
       "TimerCreateInput",
       "TimerUpdateInput",
+
+      "TaskReactionCreateInput",
+      "TaskReactionUpdateInput",
+      "TaskCreateOneInput",
+      "TaskUpdateOneInput",
 
       "ProjectMemberCreateInput",
       "ProjectMemberUpdateInput",

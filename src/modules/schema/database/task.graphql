@@ -44,4 +44,5 @@ type Task {
   endDate: DateTime
 
   Timers: [Timer!]! @relation(name: "TaskTimers")
+  Reactions: [TaskReaction!]!
 }
