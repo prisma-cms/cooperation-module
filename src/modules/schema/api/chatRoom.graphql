@@ -1,0 +1,9 @@
+
+input ChatRoomCreateInput {
+  Task: TaskCreateOneWithoutChatRoomInput
+}
+
+input TaskCreateOneWithoutChatRoomInput {
+  # create: TaskCreateWithoutChatRoomInput
+  connect: TaskWhereUniqueInput
+}

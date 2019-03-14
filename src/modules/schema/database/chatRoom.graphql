@@ -1,0 +1,5 @@
+
+type ChatRoom {
+  id: ID! @unique
+  Task: Task
+}

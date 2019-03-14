@@ -45,4 +45,8 @@ type Task {
 
   Timers: [Timer!]! @relation(name: "TaskTimers")
   Reactions: [TaskReaction!]!
+  """
+    ....
+  """
+  ChatRoom: ChatRoom
 }

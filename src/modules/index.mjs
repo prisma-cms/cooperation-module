@@ -10,6 +10,7 @@ import LogModule from "@prisma-cms/log-module";
 import RouterModule from "@prisma-cms/router-module";
 import MailModule from "@prisma-cms/mail-module";
 import UploadModule from "@prisma-cms/upload-module";
+import SocietyModule from "@prisma-cms/society-module";
 
 import ProjectModule from "./project";
 import ProjectMemberModule from "./projectMember";
@@ -48,6 +49,7 @@ class Module extends PrismaModule {
       RouterModule,
       MailModule,
       UploadModule,
+      SocietyModule,
 
       ProjectModule,
       ProjectMemberModule,
@@ -94,6 +96,23 @@ class Module extends PrismaModule {
 
     if (fs.existsSync(schemaFile)) {
       baseSchema = fs.readFileSync(schemaFile, "utf-8");
+
+
+      baseSchema = this.cleanupApiSchema(baseSchema, [
+        "ChatRoomCreateInput",
+        "ChatRoomUpdateInput",
+        "UserCreateManyWithoutRoomsInput",
+        "UserUpdateManyWithoutRoomsInput",
+        // "ChatRoomInvitationUpdateManyWithoutRoomInput",
+
+        "ChatMessageCreateInput",
+        "ChatMessageUpdateInput",
+        "ChatRoomCreateOneWithoutMessagesInput",
+
+        "ChatMessageReadedCreateInput",
+        "ChatMessageCreateOneWithoutReadedByInput",
+      ]);
+
     }
 
     let apiSchema = super.getApiSchema(types.concat(baseSchema), [
@@ -136,6 +155,8 @@ class Module extends PrismaModule {
       "PositionUpdateInput",
       "UserCreateManyWithoutPositionsInput",
       "UserUpdateManyWithoutPositionsInput",
+
+      "TaskCreateOneWithoutChatRoomInput",
     ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {

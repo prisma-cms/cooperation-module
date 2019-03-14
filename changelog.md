@@ -1,5 +1,8 @@
+1.6.0
 ===============================
 - Upgrade boilerplate
+- Added @prisma-cms/society-module
+- Added relation Task-ChatRoom
 
 1.5.0
 ===============================
