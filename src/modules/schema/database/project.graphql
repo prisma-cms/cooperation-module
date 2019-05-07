@@ -5,6 +5,11 @@ type Project {
   updatedAt: DateTime!
   name: String!
   description: String
+  url: String
+
+  """По хосту определяется к какому именно проекту относится запрос"""
+  domain: String @unique
+  
   Members: [ProjectMember!]! @relation(name: "ProjectMemberProject")
   CreatedBy: User! @relation(name: "ProjectCreatedBy")
   Tasks: [Task!]! @relation(name: "ProjectTasks")

@@ -1,7 +1,7 @@
 {
   "name": "@prisma-cms/cooperation-module",
   "description": "Cooperation module for @prisma-cms/server",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "main": "src/",
   "files": [
     "src"
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@prisma-cms/server": "latest",
+    "@prisma-cms/sms-module": "latest",
     "expect": "^23.6.0",
     "graphql": "*",
     "mocha": "^5.2.0",

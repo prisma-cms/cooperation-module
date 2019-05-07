@@ -1,10 +1,11 @@
- 
+
 
 import chalk from "chalk";
 
 import PrismaModule from "@prisma-cms/prisma-module";
 import PrismaProcessor from "@prisma-cms/prisma-processor";
-  
+
+import URI from "urijs";
 
 export class ProjectProcessor extends PrismaProcessor {
 
@@ -47,22 +48,45 @@ export class ProjectProcessor extends PrismaProcessor {
     let {
       data: {
         name,
+        url,
+        domain,
         ...data
       },
     } = args;
 
 
-    if(name !== undefined){
+    if (name !== undefined) {
       name = name && name.trim() || null;
 
-      if(!name){
+      if (!name) {
         this.addFieldError("name", "Не указано название проекта");
       }
     }
 
 
+    /**
+     * Если меняется УРЛ, то меняем и домен
+     */
+    if (url !== undefined) {
+
+      if (url) {
+
+        const uri = new URI(url);
+
+        domain = uri.domain() || null;
+
+      }
+      else {
+        domain = null;
+      }
+
+    }
+
+
     Object.assign(data, {
       name,
+      url,
+      domain,
     });
 
 
@@ -72,7 +96,7 @@ export class ProjectProcessor extends PrismaProcessor {
 
     return super.mutate(method, args);
   }
- 
+
 
 
   getCreatedBy() {
@@ -132,7 +156,7 @@ class ProjectModule extends PrismaModule {
       Subscription: {
         project: {
           subscribe: async (parent, args, ctx, info) => {
-  
+
             return ctx.db.subscription.project({}, info);
           },
         },

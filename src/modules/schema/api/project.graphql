@@ -14,12 +14,14 @@ input ProjectCreateInput {
   Members: ProjectMemberCreateManyWithoutProjectInput
   Tasks: TaskCreateManyWithoutProjectInput
   Team: TeamCreateOneWithoutProjectsInput
+  url: String
 }
 
 
 input ProjectUpdateInput {
   name: String
   description: String
+  url: String
   Members: ProjectMemberUpdateManyWithoutProjectInput
   Tasks: TaskUpdateManyWithoutProjectInput
   Team: TeamUpdateOneWithoutProjectsInput

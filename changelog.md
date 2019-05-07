@@ -1,3 +1,8 @@
+1.6.1
+===============================
+- Added Project::url
+- Added Project::domain
+
 1.6.0
 ===============================
 - Upgrade boilerplate
