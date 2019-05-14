@@ -73,7 +73,7 @@ export class ProjectProcessor extends PrismaProcessor {
 
         const uri = new URI(url);
 
-        domain = uri.domain() || null;
+        domain = uri.hostname() || null;
 
       }
       else {
