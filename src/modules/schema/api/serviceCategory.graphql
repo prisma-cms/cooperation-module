@@ -1,0 +1,7 @@
+
+type ServiceCategoryResponse {
+  success: Boolean!
+  message: String
+  errors: [Error!]!
+  data: ServiceCategory
+}

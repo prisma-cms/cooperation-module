@@ -1,0 +1,11 @@
+
+type ServiceCategory {
+  id: ID! @unique
+  name: String!
+  description: String
+  code: ID @unique
+  CreatedBy: User! @relation(name: "ServiceCategoryCreatedBy")
+  Services: [Service!]! @relation(name: "ServiceCategoryService")
+  Parent: ServiceCategory @relation(name: "ServiceCategories")
+  Childs: [ServiceCategory!]! @relation(name: "ServiceCategories")
+}

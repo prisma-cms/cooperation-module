@@ -2,4 +2,5 @@
 type ChatRoom {
   id: ID! @unique
   Task: Task
+  Project: Project
 }

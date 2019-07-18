@@ -1,5 +1,7 @@
 
-import startServer from "@prisma-cms/server";
+import startServer, {
+  modifyArgs,
+} from "@prisma-cms/server";
 
 import Module from "../";
 
@@ -13,4 +15,8 @@ const resolvers = module.getResolvers();
 startServer({
   typeDefs: 'src/schema/generated/api.graphql',
   resolvers,
+  contextOptions: {
+    modifyArgs,
+    resolvers,
+  },
 });

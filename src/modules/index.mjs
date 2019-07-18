@@ -7,7 +7,7 @@ import PrismaModule from "@prisma-cms/prisma-module";
 
 import UserModule from "@prisma-cms/user-module";
 import LogModule from "@prisma-cms/log-module";
-import RouterModule from "@prisma-cms/router-module";
+// import RouterModule from "@prisma-cms/router-module";
 import MailModule from "@prisma-cms/mail-module";
 import UploadModule from "@prisma-cms/upload-module";
 import SocietyModule from "@prisma-cms/society-module";
@@ -46,7 +46,7 @@ class Module extends PrismaModule {
     this.mergeModules([
       UserModule,
       LogModule,
-      RouterModule,
+      // RouterModule,
       MailModule,
       UploadModule,
       SocietyModule,
@@ -157,6 +157,8 @@ class Module extends PrismaModule {
       "UserUpdateManyWithoutPositionsInput",
 
       "TaskCreateOneWithoutChatRoomInput",
+
+      "ServiceCreateInput",
     ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {

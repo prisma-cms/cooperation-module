@@ -9,5 +9,6 @@ type Service {
   Parent: Service @relation(name: "Services")
   Childs: [Service!]! @relation(name: "Services")
   rank: Int
+  Category: ServiceCategory @relation(name: "ServiceCategoryService")
 }
  

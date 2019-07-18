@@ -6,7 +6,13 @@ type Team {
   Childs: [Team!]! @relation(name: "Teams")
   CreatedBy: User! @relation(name: "UserTeamsCreated")
   Members: [TeamMember!]! @relation(name: "TeamMembers")
+
+  """Проекты, которые команда выполняла"""
   Projects: [Project!]! @relation(name: "TeamProjects")
+
+  """Проекты, которые команда заказывала"""
+  OrderedProjects: [Project!]! @relation(name: "ProjectCustomers")
+
   status: TeamStatus! @default(value: Active)
 }
 

@@ -9,9 +9,13 @@ type ProjectMember {
 }
 
 enum ProjectMemberStatus {
+  """Приглашен в проект"""
   Invited
+  """Активный участник"""
   Active
+  """Уволен по инициативе владельца проекта"""
   Fired
+  """Уволен по собственному желанию"""
   Quit
 }
 

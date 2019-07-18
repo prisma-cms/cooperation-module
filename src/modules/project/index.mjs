@@ -22,14 +22,26 @@ export class ProjectProcessor extends PrismaProcessor {
 
   async create(method, args, info) {
 
+    const {
+      db,
+    } = this.ctx;
+
     let {
       data: {
         ...data
       },
     } = args;
 
+    const lastObject = await db.query.projects({
+      orderBy: "sequence_DESC",
+      first: 1,
+    });
+
+
+    const sequence = (lastObject && lastObject[0] && lastObject[0].sequence || 0) + 1;
 
     Object.assign(data, {
+      sequence,
       ...this.getCreatedBy(),
     });
 
@@ -136,9 +148,9 @@ class ProjectModule extends PrismaModule {
 
 
     Object.assign(resolvers.Query, {
-      project: this.project,
-      projects: this.projects,
-      projectsConnection: this.projectsConnection,
+      project: this.project.bind(this),
+      projects: this.projects.bind(this),
+      projectsConnection: this.projectsConnection.bind(this),
     });
 
 
@@ -166,17 +178,147 @@ class ProjectModule extends PrismaModule {
     return resolvers;
   }
 
+  async project(source, args, ctx, info) {
+
+    let objects = await this.projects(source, args, ctx, info);
+
+    return objects && objects[0] || null;
+
+    // return ctx.db.query.project(args, info);
+  }
 
   projects(source, args, ctx, info) {
+
+    Object.assign(args, {
+      where: this.prepareQueryArgs(args, ctx),
+    });
+
+    // console.log("args.where", JSON.stringify(args.where, true, 2));
+
     return ctx.db.query.projects(args, info);
   }
 
-  project(source, args, ctx, info) {
-    return ctx.db.query.project(args, info);
-  }
 
   projectsConnection(source, args, ctx, info) {
+
+    Object.assign(args, {
+      where: this.prepareQueryArgs(args, ctx),
+    });
+
+    // console.log("args.where", JSON.stringify(args.where, true, 2));
+
     return ctx.db.query.projectsConnection(args, info);
+  }
+
+  prepareQueryArgs(args, ctx) {
+
+    return this.prepareAccesibleQuery(args, ctx);
+  }
+
+
+  /**
+   * Получать можно только публичные проекты или те, в которых состоит пользователь
+   */
+  prepareAccesibleQuery(args, ctx) {
+
+    let {
+      where,
+    } = args;
+
+    const {
+      currentUser,
+    } = ctx;
+
+    const {
+      id: currentUserId,
+    } = currentUser || {};
+
+
+    let OR = [
+      {
+        public: true,
+      },
+    ];
+
+    if (currentUserId) {
+
+      /**
+       * Создатель проекта
+       */
+      OR.push({
+        CreatedBy: {
+          id: currentUserId,
+        }
+      });
+
+      /**
+       * Непосредственно участники этого проекта
+       */
+      OR.push({
+        Members_some: {
+          User: {
+            id: currentUserId,
+          },
+          status: "Active",
+        }
+      });
+
+      /**
+       * Члены команды-исполнителя
+       */
+      OR.push({
+        Team: {
+          OR: [
+            {
+              CreatedBy: {
+                id: currentUserId,
+              },
+            },
+            {
+              Members_some: {
+                User: {
+                  id: currentUserId,
+                },
+                status: "Active",
+              },
+            },
+          ],
+        },
+      });
+
+      /**
+       * Члены команд-заказчиков
+       */
+      OR.push({
+        Customers_some: {
+          OR: [
+            {
+              CreatedBy: {
+                id: currentUserId,
+              },
+            },
+            {
+              Members_some: {
+                User: {
+                  id: currentUserId,
+                },
+                status: "Active",
+              },
+            },
+          ],
+        }
+      });
+
+    }
+
+
+    return {
+      OR,
+      AND: where ? {
+        ...where,
+      } : undefined,
+    };
+
   }
 
 

@@ -126,7 +126,13 @@ export class TeamMemberProcessor extends PrismaProcessor {
 
     const {
       db,
+      currentUser,
     } = this.ctx;
+
+
+    const {
+      id: currentUserId,
+    } = currentUser || {};
 
     const {
       connect: teamWhere,
@@ -142,6 +148,36 @@ export class TeamMemberProcessor extends PrismaProcessor {
 
     if (!userWhere) {
       return this.addError("Не было получено условие проверки пользователя");
+    }
+
+
+    /**
+     * Проверяем, чтобы компания была создана именно текущим пользователем
+     */
+
+    const company = await db.query.team({
+      where: teamWhere,
+    }, `{
+      id
+      CreatedBy {
+        id
+      }
+    }`);
+
+    if (!company) {
+
+      throw new Error("Не была получена компания");
+    }
+    else {
+
+      const {
+        CreatedBy,
+      } = company;
+
+      if (!CreatedBy || CreatedBy.id !== currentUserId) {
+        throw new Error("Нельзя редактировать чужую компанию");
+      }
+
     }
 
     const exists = await db.exists.TeamMember({

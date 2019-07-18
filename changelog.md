@@ -1,3 +1,11 @@
+1.7.0
+===============================
+- Add private Projects
+- Added Project::sequence
+- Added Project::ChatRoom
+- Fix createProjectMember permissions
+- Fix createTeamMember permissions
+
 1.6.2
 ===============================
 - Fix create project

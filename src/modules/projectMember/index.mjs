@@ -19,10 +19,15 @@ export class ProjectMemberProcessor extends PrismaProcessor {
   }
 
 
+  /**
+   * Создание связки Пользователь-Проект выполняется через процессор обновления проекта, 
+   * чтобы выполнялась проверка прав на обновление проекта.
+   */
   async create(method, args, info) {
 
     let {
       data: {
+        Project,
         ...data
       },
     } = args;
@@ -33,36 +38,163 @@ export class ProjectMemberProcessor extends PrismaProcessor {
 
     if (!CreatedBy) {
       return;
-    }
+    };
 
     const {
       db,
       currentUser,
+      resolvers: {
+        Mutation: {
+          updateProjectProcessor,
+        },
+      },
     } = this.ctx;
 
     const {
       id: currentUserId,
     } = currentUser;
 
-
     /**
      * Проверяем уникальность
      */
-    await this.checkUniqueOnCreate(args);
+    const exist = await this.checkUniqueOnCreate(args);
+
+    if (exist) {
+      return exist;
+    }
 
 
-    Object.assign(data, {
-      ...CreatedBy,
-    });
+    if (!this.hasErrors()) {
+
+      const {
+        connect: projectWhere,
+      } = Project;
 
 
-    Object.assign(args, {
-      data,
-    });
+      Object.assign(data, {
+        ...CreatedBy,
+      });
 
 
-    return super.create(method, args, info);
+      Object.assign(args, {
+        data,
+      });
+
+      const updateProjectResult = await updateProjectProcessor(null, {
+        data: {
+          Members: {
+            create: [data],
+          },
+        },
+        where: projectWhere,
+      }, this.ctx);
+
+      const {
+        success,
+        message,
+        errors,
+        data: project,
+      } = updateProjectResult;
+
+      // console.log("updateProjectProcessor result", updateProjectResult);
+
+      if (!success || !project) {
+
+        Object.assign(this, {
+          message,
+          errors: this.errors.concat(errors || []),
+        });
+
+        return false;
+      }
+      else {
+
+        /**
+         * Если проект успешно обновили, то возвращаем последнюю созданную запись
+         */
+
+        const projectMembers = await db.query.projectMembers({
+          first: 1,
+          orderBy: "createdAt_DESC",
+          where: {
+            Project: projectWhere,
+          },
+        });
+
+        const projectMember = projectMembers ? projectMembers[0] : null;
+
+        // console.log("updateProjectProcessor projectMembers", projectMembers);
+        // console.log("updateProjectProcessor projectMember", projectMember);
+
+        return projectMember;
+
+      }
+
+    }
+
+
+
+
+    return null;
+
+    // return super.create(method, args, info);
   }
+
+
+  // async create(method, args, info) {
+
+  //   let {
+  //     data: {
+  //       ...data
+  //     },
+  //   } = args;
+
+
+  //   const CreatedBy = this.getCreatedBy();
+
+
+  //   if (!CreatedBy) {
+  //     return;
+  //   }
+
+  //   const {
+  //     db,
+  //     currentUser,
+  //   } = this.ctx;
+
+  //   const {
+  //     id: currentUserId,
+  //   } = currentUser;
+
+
+  //   /**
+  //    * Проверяем уникальность
+  //    */
+  //   const exist = await this.checkUniqueOnCreate(args);
+
+  //   if (exist) {
+  //     return exist;
+  //   }
+
+
+  //   Object.assign(data, {
+  //     ...CreatedBy,
+  //   });
+
+
+  //   Object.assign(args, {
+  //     data,
+  //   });
+
+
+  //   return null;
+
+  //   // return super.create(method, args, info);
+  // }
+
+
+
+
 
 
   async mutate(method, args, info) {
@@ -81,6 +213,8 @@ export class ProjectMemberProcessor extends PrismaProcessor {
     // Object.assign(args, {
     //   data,
     // });
+
+    // console.log("mutate args", args);
 
     return super.mutate(method, args);
   }
@@ -119,7 +253,7 @@ export class ProjectMemberProcessor extends PrismaProcessor {
 
     const {
       data: {
-        Team,
+        Project,
         User,
       },
     } = args;
@@ -129,24 +263,42 @@ export class ProjectMemberProcessor extends PrismaProcessor {
     } = this.ctx;
 
     const {
-      connect: teamWhere,
-    } = Team || {};
+      connect: projectWhere,
+    } = Project || {};
 
     const {
       connect: userWhere,
     } = User || {};
 
-    if (!teamWhere) {
-      return this.addError("Не было получено условие проверки компании");
+    if (!projectWhere) {
+      // return this.addError("Не было получено условие проверки компании");
+      throw new Error("Не было получено условие проверки компании");
     }
 
     if (!userWhere) {
-      return this.addError("Не было получено условие проверки пользователя");
+      // return this.addError("Не было получено условие проверки пользователя");
+      throw new Error("Не было получено условие проверки пользователя");
     }
 
+    // const projectMembers = await db.query.projectMembers({
+    //   where: {
+    //     Project: {
+    //       ...projectWhere,
+    //     },
+    //     User: {
+    //       ...userWhere,
+    //     },
+    //   },
+    //   first: 1,
+    // });
+
+    // return projectMembers ? projectMembers[0] : null;
+
+    // console.log("exists", exists);
+
     const exists = await db.exists.ProjectMember({
-      Team: {
-        ...teamWhere,
+      Project: {
+        ...projectWhere,
       },
       User: {
         ...userWhere,
@@ -156,9 +308,10 @@ export class ProjectMemberProcessor extends PrismaProcessor {
     // console.log("exists", exists);
 
     if (exists) {
-      this.addError("Пользователь уже есть в этой компании");
+      throw new Error("Пользователь уже есть в этом проекте");
     }
 
+    return exists;
   }
 
 }
@@ -196,7 +349,7 @@ class ProjectMemberModule extends PrismaModule {
       Subscription: {
         projectMember: {
           subscribe: async (parent, args, ctx, info) => {
-  
+
             return ctx.db.subscription.projectMember({}, info);
           },
         },

@@ -13,9 +13,53 @@ type Project {
   Members: [ProjectMember!]! @relation(name: "ProjectMemberProject")
   CreatedBy: User! @relation(name: "ProjectCreatedBy")
   Tasks: [Task!]! @relation(name: "ProjectTasks")
+  
+  """Команда-исполнитель"""
   Team: Team @relation(name: "TeamProjects")
+
+  """Команды-заказчики (Как правило одна)"""
+  Customers: [Team!]! @relation(name: "ProjectCustomers")
+
+  ChatRoom: ChatRoom
+
+  """Генерируемая последовательность, чтобы с заявками было проще ориентироваться"""
+  sequence: Int @unique
+
+  """Описание проекта."""
+  content: Json
+
+  """Контент, сохраненный в простой текст. Для поиска"""
+  contentText: String
+
+  """Статус выполнения проекта"""
+  status: ProjectStatus
+
+  """Публичные проекты доступны всем"""
+  public: Boolean @default(value: true)
+
 }
 
+
+enum ProjectStatus {
+
+  """Новый"""
+  New
+
+  """Принят"""
+  Accepted
+
+  """Отменен"""
+  Rejected
+
+  """В работе"""
+  Processing
+
+  """Выполнен"""
+  Completed
+
+  """Возобновлен"""
+  Reopened
+}
 
 # enum ProjectRole{
 #   Owner
