@@ -46,3 +46,12 @@ input ProjectUpdateInput {
   Customers: TeamUpdateManyWithoutOrderedProjectsInput
   # ChatRoom: ChatRoomUpdateOneWithoutProjectInput
 }
+
+input ProjectWhereInput {
+
+  """Поиск по нескольким полям"""
+  search: String
+
+  """Только активные проекты"""
+  active_only: Boolean
+}

@@ -1,3 +1,7 @@
+===============================
+- Added Project::search query
+- Added Project::active_only query
+
 1.7.0
 ===============================
 - Add private Projects

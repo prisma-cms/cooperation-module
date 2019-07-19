@@ -32,7 +32,7 @@ type Project {
   contentText: String
 
   """Статус выполнения проекта"""
-  status: ProjectStatus
+  status: ProjectStatus @default(value: New)
 
   """Публичные проекты доступны всем"""
   public: Boolean @default(value: true)
