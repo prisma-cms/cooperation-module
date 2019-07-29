@@ -1,3 +1,4 @@
+1.7.1
 ===============================
 - Added Project::search query
 - Added Project::active_only query

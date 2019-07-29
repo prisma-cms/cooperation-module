@@ -156,7 +156,7 @@ class ProjectModule extends PrismaModule {
       if (where) {
 
         where = {
-          condition,
+          // condition,
           AND: [
             condition,
             where,
