@@ -10,14 +10,14 @@ type TaskReactionResponse{
 input TaskReactionCreateInput {
   type: TaskReactionType
   # CreatedBy: UserCreateOneWithoutTasksReactionsInput
-  Task: TaskCreateOneInput!
+  Task: TaskCreateOneWithoutReactionsInput!
 }
 
 
 input TaskReactionUpdateInput {
   type: TaskReactionType
   # CreatedBy: UserUpdateOneWithoutTasksReactionsInput
-  Task: TaskUpdateOneInput
+  Task: TaskUpdateOneWithoutReactionsInput
 }
 
 

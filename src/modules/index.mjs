@@ -158,7 +158,7 @@ class Module extends PrismaModule {
 
       "TaskCreateOneWithoutChatRoomInput",
 
-      "ServiceCreateInput",
+      // "ServiceCreateInput",
     ]);
 
     let schema = fileLoader(__dirname + '/schema/api/', {
