@@ -107,36 +107,36 @@ export class ProjectProcessor extends PrismaProcessor {
       data,
     });
 
-    console.log("ProjectProcessor mutate data", JSON.stringify(data, true, 2));
+    // console.log("ProjectProcessor mutate data", JSON.stringify(data, true, 2));
 
     return super.mutate(method, args);
   }
 
 
 
-  // getCreatedBy() {
+  getCreatedBy() {
 
-  //   const {
-  //     currentUser,
-  //   } = this.ctx;
+    const {
+      currentUser,
+    } = this.ctx;
 
-  //   if (!currentUser) {
-  //     this.addError("Необходимо авторизоваться");
-  //     return;
-  //   }
+    if (!currentUser) {
+      this.addError("Необходимо авторизоваться");
+      return;
+    }
 
-  //   const {
-  //     id,
-  //   } = currentUser;
+    const {
+      id,
+    } = currentUser;
 
-  //   return {
-  //     CreatedBy: {
-  //       connect: {
-  //         id,
-  //       },
-  //     },
-  //   }
-  // }
+    return {
+      CreatedBy: {
+        connect: {
+          id,
+        },
+      },
+    }
+  }
 
 }
 
