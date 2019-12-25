@@ -1,7 +1,9 @@
 
 type ProjectMember {
-  id: ID! @unique
-  CreatedBy: User! @relation(name: "ProjectMemberCreatedBy")
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  CreatedBy: User @relation(name: "ProjectMemberCreatedBy")
   Project: Project! @relation(name: "ProjectMemberProject")
   User: User! @relation(name: "ProjectMemberUser")
   Services: [Service!]! @relation(name: "ProjectMemberServices")
@@ -27,6 +29,6 @@ enum ProjectMemberStatus {
 #   # role: ProjectRole! @default(value: Member)
 #   Project: Project! @relation(name: "ProjectMemberProject")
 #   User: User! @relation(name: "ProjectMemberUser")
-#   CreatedBy: User! @relation(name: "ProjectMemberCreatedBy")
+#   CreatedBy: User @relation(name: "ProjectMemberCreatedBy")
 # }
  

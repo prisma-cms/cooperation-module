@@ -1,8 +1,8 @@
 
 type Project {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   name: String!
   description: String
   url: String
@@ -11,7 +11,7 @@ type Project {
   domain: String @unique
   
   Members: [ProjectMember!]! @relation(name: "ProjectMemberProject")
-  CreatedBy: User! @relation(name: "ProjectCreatedBy")
+  CreatedBy: User @relation(name: "ProjectCreatedBy")
   Tasks: [Task!]! @relation(name: "ProjectTasks")
   
   """Команда-исполнитель"""
@@ -20,7 +20,7 @@ type Project {
   """Команды-заказчики (Как правило одна)"""
   Customers: [Team!]! @relation(name: "ProjectCustomers")
 
-  ChatRoom: ChatRoom
+  ChatRoom: ChatRoom @relation(name: "ProjectChatRoom" link: INLINE)
 
   """Генерируемая последовательность, чтобы с заявками было проще ориентироваться"""
   sequence: Int @unique

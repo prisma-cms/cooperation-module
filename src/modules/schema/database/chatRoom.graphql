@@ -1,6 +1,8 @@
 
 type ChatRoom {
-  id: ID! @unique
-  Task: Task
-  Project: Project
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  Task: Task @relation(name: "TaskChatRoom")
+  Project: Project @relation(name: "ProjectChatRoom")
 }

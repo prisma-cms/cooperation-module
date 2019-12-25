@@ -1,6 +1,8 @@
 
 type Service {
-  id: ID! @unique
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   name: String
   description: String
   code: ID @unique

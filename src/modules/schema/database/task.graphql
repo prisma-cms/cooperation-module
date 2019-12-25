@@ -20,15 +20,15 @@ enum TaskStatus {
 """
 
 type Task {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   name: String!
   description: String
   content: Json
   status: TaskStatus! @default(value: New)
   Project: Project! @relation(name: "ProjectTasks")
-  CreatedBy: User! @relation(name: "UserCreatedTasks")
+  CreatedBy: User @relation(name: "UserCreatedTasks")
   Members: [TaskMember!]! @relation(name: "TaskMemberTask")
   Parent: Task @relation(name: "Tasks")
   Childs: [Task!]! @relation(name: "Tasks")
@@ -45,8 +45,6 @@ type Task {
 
   Timers: [Timer!]! @relation(name: "TaskTimers")
   Reactions: [TaskReaction!]!
-  """
-    ....
-  """
-  ChatRoom: ChatRoom
+  
+  ChatRoom: ChatRoom @relation(name: "TaskChatRoom" link: INLINE)
 }

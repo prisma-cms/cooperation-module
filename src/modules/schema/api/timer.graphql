@@ -7,11 +7,11 @@ type TimerResponse{
 }
 
 
-input TimerCreateInput {
-  stopedAt: DateTime
-  Task: TaskCreateOneWithoutTimersInput!
-}
+# input TimerCreateInput {
+#   stopedAt: DateTime
+#   Task: TaskCreateOneWithoutTimersInput!
+# }
 
-input TimerUpdateInput {
-  stopedAt: DateTime
-}
+# input TimerUpdateInput {
+#   stopedAt: DateTime
+# }

@@ -1,9 +1,11 @@
 
 type TeamMember {
-  id: ID! @unique
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   Team: Team! @relation(name: "TeamMembers")
   User: User! @relation(name: "TeamMemberUser")
-  CreatedBy: User! @relation(name: "TeamMembersCreatedBy")
+  CreatedBy: User @relation(name: "TeamMembersCreatedBy")
   status: TeamMemberStatus @value(default: Active)
 }
 

@@ -7,29 +7,29 @@ type TaskReactionResponse{
 }
 
 
-input TaskReactionCreateInput {
-  type: TaskReactionType
-  # CreatedBy: UserCreateOneWithoutTasksReactionsInput
-  Task: TaskCreateOneWithoutReactionsInput!
-}
+# input TaskReactionCreateInput {
+#   type: TaskReactionType
+#   # CreatedBy: UserCreateOneWithoutTasksReactionsInput
+#   Task: TaskCreateOneWithoutReactionsInput!
+# }
 
 
-input TaskReactionUpdateInput {
-  type: TaskReactionType
-  # CreatedBy: UserUpdateOneWithoutTasksReactionsInput
-  Task: TaskUpdateOneWithoutReactionsInput
-}
+# input TaskReactionUpdateInput {
+#   type: TaskReactionType
+#   # CreatedBy: UserUpdateOneWithoutTasksReactionsInput
+#   Task: TaskUpdateOneWithoutReactionsInput
+# }
 
 
-input TaskCreateOneInput {
-  # create: TaskCreateInput
-  connect: TaskWhereUniqueInput
-}
+# input TaskCreateOneInput {
+#   # create: TaskCreateInput
+#   connect: TaskWhereUniqueInput
+# }
 
-input TaskUpdateOneInput {
-  # create: TaskCreateInput
-  connect: TaskWhereUniqueInput
-  # delete: Boolean
-  # update: TaskUpdateDataInput
-  # upsert: TaskUpsertNestedInput
-}
+# input TaskUpdateOneInput {
+#   # create: TaskCreateInput
+#   connect: TaskWhereUniqueInput
+#   # delete: Boolean
+#   # update: TaskUpdateDataInput
+#   # upsert: TaskUpsertNestedInput
+# }

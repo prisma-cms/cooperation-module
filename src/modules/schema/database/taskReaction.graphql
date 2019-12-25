@@ -4,9 +4,9 @@ enum TaskReactionType {
 }
 
 type TaskReaction {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   CreatedBy: User
   Task: Task!
   type: TaskReactionType

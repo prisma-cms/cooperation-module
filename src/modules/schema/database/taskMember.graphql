@@ -1,7 +1,9 @@
 
 type TaskMember {
-  id: ID! @unique
-  CreatedBy: User! @relation(name: "TaskMemberCreatedBy")
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  CreatedBy: User @relation(name: "TaskMemberCreatedBy")
   Task: Task! @relation(name: "TaskMemberTask")
   User: User! @relation(name: "TaskMemberUser")
   status: TaskMemberStatus! @value(default: Active)

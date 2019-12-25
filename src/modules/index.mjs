@@ -1,7 +1,7 @@
 
 import fs from "fs";
 
-import chalk from "chalk";
+// import chalk from "chalk";
 
 import PrismaModule from "@prisma-cms/prisma-module";
 
@@ -116,47 +116,47 @@ class Module extends PrismaModule {
     }
 
     let apiSchema = super.getApiSchema(types.concat(baseSchema), [
-      "ProjectCreateInput",
-      "ProjectUpdateInput",
-      "TaskCreateInput",
-      "TaskUpdateInput",
-      "TimerCreateInput",
-      "TimerUpdateInput",
+      // "ProjectCreateInput",
+      // "ProjectUpdateInput",
+      // "TaskCreateInput",
+      // "TaskUpdateInput",
+      // "TimerCreateInput",
+      // "TimerUpdateInput",
 
-      "TaskReactionCreateInput",
-      "TaskReactionUpdateInput",
-      "TaskCreateOneInput",
-      "TaskUpdateOneInput",
+      // "TaskReactionCreateInput",
+      // "TaskReactionUpdateInput",
+      // "TaskCreateOneInput",
+      // "TaskUpdateOneInput",
 
-      "ProjectMemberCreateInput",
-      "ProjectMemberUpdateInput",
-      "ProjectCreateOneWithoutMembersInput",
-      "UserCreateOneWithoutProjectsInput",
-      "ServiceCreateManyWithoutProjectsInput",
-      "ServiceUpdateManyWithoutProjectsInput",
+      // "ProjectMemberCreateInput",
+      // "ProjectMemberUpdateInput",
+      // "ProjectCreateOneWithoutMembersInput",
+      // "UserCreateOneWithoutProjectsInput",
+      // "ServiceCreateManyWithoutProjectsInput",
+      // "ServiceUpdateManyWithoutProjectsInput",
 
-      "TeamCreateInput",
-      "TeamUpdateInput",
-      "TeamCreateOneWithoutChildsInput",
-      "TeamCreateManyWithoutParentInput",
-      "TeamMemberCreateManyWithoutTeamInput",
-      "ProjectCreateManyWithoutTeamInput",
-      "TeamUpdateOneWithoutChildsInput",
-      "TeamUpdateManyWithoutParentInput",
-      "TeamMemberUpdateManyWithoutTeamInput",
-      "ProjectUpdateManyWithoutTeamInput",
+      // "TeamCreateInput",
+      // "TeamUpdateInput",
+      // "TeamCreateOneWithoutChildsInput",
+      // "TeamCreateManyWithoutParentInput",
+      // "TeamMemberCreateManyWithoutTeamInput",
+      // "ProjectCreateManyWithoutTeamInput",
+      // "TeamUpdateOneWithoutChildsInput",
+      // "TeamUpdateManyWithoutParentInput",
+      // "TeamMemberUpdateManyWithoutTeamInput",
+      // "ProjectUpdateManyWithoutTeamInput",
 
-      "TeamMemberCreateInput",
-      "TeamMemberUpdateInput",
-      "TeamCreateOneWithoutMembersInput",
-      "UserCreateOneWithoutTeamsInput",
+      // "TeamMemberCreateInput",
+      // "TeamMemberUpdateInput",
+      // "TeamCreateOneWithoutMembersInput",
+      // "UserCreateOneWithoutTeamsInput",
 
-      "PositionCreateInput",
-      "PositionUpdateInput",
-      "UserCreateManyWithoutPositionsInput",
-      "UserUpdateManyWithoutPositionsInput",
+      // "PositionCreateInput",
+      // "PositionUpdateInput",
+      // "UserCreateManyWithoutPositionsInput",
+      // "UserUpdateManyWithoutPositionsInput",
 
-      "TaskCreateOneWithoutChatRoomInput",
+      // "TaskCreateOneWithoutChatRoomInput",
 
       // "ServiceCreateInput",
     ]);
@@ -175,20 +175,25 @@ class Module extends PrismaModule {
 
   getResolvers() {
 
-    const resolvers = super.getResolvers();
+    const {
+      // Query,
+      // Mutation,
+      // Subscription,
+      ...other
+    } = super.getResolvers();
 
-
-    Object.assign(resolvers.Query, this.Query);
-
-    Object.assign(resolvers.Mutation, this.Mutation);
-
-    Object.assign(resolvers.Subscription, this.Subscription);
-
-
-    Object.assign(resolvers, {
-    });
-
-    return resolvers;
+    return {
+      ...other,
+      // Query: {
+      //   ...Query,
+      // },
+      // Mutation: {
+      //   ...Mutation,
+      // },
+      // Subscription: {
+      //   ...Subscription,
+      // },
+    };
   }
 
 

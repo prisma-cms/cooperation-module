@@ -8,39 +8,39 @@ type TaskResponse{
 
 
 
-input TaskCreateInput {
-  name: String!
-  description: String
-  content: Json
-  status: TaskStatus
-  startDatePlaning: DateTime
-  endDatePlaning: DateTime
-  startDate: DateTime
-  endDate: DateTime
-  Project: ProjectCreateOneWithoutTasksInput!
-  Members: TaskMemberCreateManyWithoutTaskInput
-  Parent: TaskCreateOneWithoutChildsInput
-  Childs: TaskCreateManyWithoutParentInput
-  RelatedFrom: TaskCreateManyWithoutRelatedToInput
-  RelatedTo: TaskCreateManyWithoutRelatedFromInput
-  Timers: TimerCreateManyWithoutTaskInput
-}
+# input TaskCreateInput {
+#   name: String!
+#   description: String
+#   content: Json
+#   status: TaskStatus
+#   startDatePlaning: DateTime
+#   endDatePlaning: DateTime
+#   startDate: DateTime
+#   endDate: DateTime
+#   Project: ProjectCreateOneWithoutTasksInput!
+#   Members: TaskMemberCreateManyWithoutTaskInput
+#   Parent: TaskCreateOneWithoutChildsInput
+#   Childs: TaskCreateManyWithoutParentInput
+#   RelatedFrom: TaskCreateManyWithoutRelatedToInput
+#   RelatedTo: TaskCreateManyWithoutRelatedFromInput
+#   Timers: TimerCreateManyWithoutTaskInput
+# }
 
 
-input TaskUpdateInput {
-  name: String
-  description: String
-  content: Json
-  status: TaskStatus
-  startDatePlaning: DateTime
-  endDatePlaning: DateTime
-  startDate: DateTime
-  endDate: DateTime
-  Project: ProjectUpdateOneWithoutTasksInput
-  Members: TaskMemberUpdateManyWithoutTaskInput
-  Parent: TaskUpdateOneWithoutChildsInput
-  Childs: TaskUpdateManyWithoutParentInput
-  RelatedFrom: TaskUpdateManyWithoutRelatedToInput
-  RelatedTo: TaskUpdateManyWithoutRelatedFromInput
-  Timers: TimerUpdateManyWithoutTaskInput
-}
+# input TaskUpdateInput {
+#   name: String
+#   description: String
+#   content: Json
+#   status: TaskStatus
+#   startDatePlaning: DateTime
+#   endDatePlaning: DateTime
+#   startDate: DateTime
+#   endDate: DateTime
+#   Project: ProjectUpdateOneWithoutTasksInput
+#   Members: TaskMemberUpdateManyWithoutTaskInput
+#   Parent: TaskUpdateOneWithoutChildsInput
+#   Childs: TaskUpdateManyWithoutParentInput
+#   RelatedFrom: TaskUpdateManyWithoutRelatedToInput
+#   RelatedTo: TaskUpdateManyWithoutRelatedFromInput
+#   Timers: TimerUpdateManyWithoutTaskInput
+# }

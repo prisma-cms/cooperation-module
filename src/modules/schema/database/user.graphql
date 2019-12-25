@@ -1,6 +1,9 @@
 
 type User {
-  id: ID! @unique
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  sudo: Boolean
   Teams: [TeamMember!]! @relation(name: "TeamMemberUser")
   TeamsCreated: [Team!]! @relation(name: "UserTeamsCreated")
   Projects: [ProjectMember!]! @relation(name: "ProjectMemberUser")

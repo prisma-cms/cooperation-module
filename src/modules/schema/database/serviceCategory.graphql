@@ -1,10 +1,12 @@
 
 type ServiceCategory {
-  id: ID! @unique
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   name: String!
   description: String
   code: ID @unique
-  CreatedBy: User! @relation(name: "ServiceCategoryCreatedBy")
+  CreatedBy: User @relation(name: "ServiceCategoryCreatedBy")
   Services: [Service!]! @relation(name: "ServiceCategoryService")
   Parent: ServiceCategory @relation(name: "ServiceCategories")
   Childs: [ServiceCategory!]! @relation(name: "ServiceCategories")

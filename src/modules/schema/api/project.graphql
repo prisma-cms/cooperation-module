@@ -8,44 +8,44 @@ type ProjectResponse{
 }
 
 
-input ProjectCreateInput {
-  domain: String
-  name: String!
-  description: String
-  url: String
-  # sequence: Int
-  content: Json
-  contentText: String
-  status: ProjectStatus
-  public: Boolean
-  # PrismaResources: ResourceCreateManyWithoutPrismaProjectInput
-  Members: ProjectMemberCreateManyWithoutProjectInput
-  # CreatedBy: UserCreateOneWithoutProjectsCreatedInput!
-  # Tasks: TaskCreateManyWithoutProjectInput
-  Team: TeamCreateOneWithoutProjectsInput
-  Customers: TeamCreateManyWithoutOrderedProjectsInput
-  # ChatRoom: ChatRoomCreateOneWithoutProjectInput
-}
+# input ProjectCreateInput {
+#   domain: String
+#   name: String!
+#   description: String
+#   url: String
+#   # sequence: Int
+#   content: Json
+#   contentText: String
+#   status: ProjectStatus
+#   public: Boolean
+#   # PrismaResources: ResourceCreateManyWithoutPrismaProjectInput
+#   Members: ProjectMemberCreateManyWithoutProjectInput
+#   # CreatedBy: UserCreateOneWithoutProjectsCreatedInput!
+#   # Tasks: TaskCreateManyWithoutProjectInput
+#   Team: TeamCreateOneWithoutProjectsInput
+#   Customers: TeamCreateManyWithoutOrderedProjectsInput
+#   # ChatRoom: ChatRoomCreateOneWithoutProjectInput
+# }
 
 
-input ProjectUpdateInput {
-  domain: String
-  name: String
-  description: String
-  url: String
-  # sequence: Int
-  content: Json
-  contentText: String
-  status: ProjectStatus
-  public: Boolean
-  # PrismaResources: ResourceUpdateManyWithoutPrismaProjectInput
-  Members: ProjectMemberUpdateManyWithoutProjectInput
-  # CreatedBy: UserUpdateOneWithoutProjectsCreatedInput
-  # Tasks: TaskUpdateManyWithoutProjectInput
-  Team: TeamUpdateOneWithoutProjectsInput
-  Customers: TeamUpdateManyWithoutOrderedProjectsInput
-  # ChatRoom: ChatRoomUpdateOneWithoutProjectInput
-}
+# input ProjectUpdateInput {
+#   domain: String
+#   name: String
+#   description: String
+#   url: String
+#   # sequence: Int
+#   content: Json
+#   contentText: String
+#   status: ProjectStatus
+#   public: Boolean
+#   # PrismaResources: ResourceUpdateManyWithoutPrismaProjectInput
+#   Members: ProjectMemberUpdateManyWithoutProjectInput
+#   # CreatedBy: UserUpdateOneWithoutProjectsCreatedInput
+#   # Tasks: TaskUpdateManyWithoutProjectInput
+#   Team: TeamUpdateOneWithoutProjectsInput
+#   Customers: TeamUpdateManyWithoutOrderedProjectsInput
+#   # ChatRoom: ChatRoomUpdateOneWithoutProjectInput
+# }
 
 input ProjectWhereInput {
 

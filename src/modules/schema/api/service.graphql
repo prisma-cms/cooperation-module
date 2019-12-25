@@ -7,12 +7,12 @@ type ServiceResponse{
 }
 
 
-input ServiceCreateInput {
-  name: String
-  description: String
-  code: ID
-  rank: Int
-  Parent: ServiceCreateOneWithoutChildsInput
-  Childs: ServiceCreateManyWithoutParentInput
-  Category: ServiceCategoryCreateOneWithoutServicesInput
-}
+# input ServiceCreateInput {
+#   name: String
+#   description: String
+#   code: ID
+#   rank: Int
+#   Parent: ServiceCreateOneWithoutChildsInput
+#   Childs: ServiceCreateManyWithoutParentInput
+#   Category: ServiceCategoryCreateOneWithoutServicesInput
+# }

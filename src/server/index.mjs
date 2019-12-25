@@ -1,15 +1,67 @@
 
-import startServer, {
+
+import {
   modifyArgs,
-} from "@prisma-cms/server";
+  PrismaCmsServer,
+} from '@prisma-cms/server'
 
-import Module from "../";
+import fs from 'fs'
+
+import CoreModule from '../'
+
+const coreModule = new CoreModule({
+})
+
+const {
+  Query,
+  ...otherResolvers
+} = coreModule.getResolvers()
 
 
-const module = new Module({
-});
+const resolvers = {
+  ...otherResolvers,
+  Query: {
+    ...Query,
 
-const resolvers = module.getResolvers();
+    apiSchema: () => {
+      const schemaFile = 'src/schema/generated/api.graphql'
+
+      let baseSchema = ''
+
+      if (fs.existsSync(schemaFile)) {
+        baseSchema = fs.readFileSync(schemaFile, 'utf-8')
+      }
+      // else {
+      //   console.log("file not exists");
+      // }
+
+      return baseSchema
+    }
+  },
+}
+
+
+class PrismaCmsServerCustom extends PrismaCmsServer {
+
+  // getServer() {
+  //   const server = super.getServer();
+  //   return server;
+  // }
+
+
+  // processRequest(request) {
+
+  //   return super.processRequest({
+  //     ...request,
+  //   });
+  // }
+
+}
+
+
+const startServer = function (options) {
+  return new PrismaCmsServerCustom(options).startServer()
+}
 
 
 startServer({
@@ -19,4 +71,6 @@ startServer({
     modifyArgs,
     resolvers,
   },
-});
+})
+
+

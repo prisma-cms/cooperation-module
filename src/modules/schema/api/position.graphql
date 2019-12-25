@@ -8,31 +8,31 @@ type PositionResponse{
 }
 
 
-input PositionCreateInput {
-  code: ID
-  name: String!
-  # CreatedBy: UserCreateOneWithoutPositionsCreatedInput!
-  Users: UserCreateManyWithoutPositionsInput
-}
+# input PositionCreateInput {
+#   code: ID
+#   name: String!
+#   # CreatedBy: UserCreateOneWithoutPositionsCreatedInput!
+#   Users: UserCreateManyWithoutPositionsInput
+# }
 
 
-input PositionUpdateInput {
-  code: ID
-  name: String
-  # CreatedBy: UserUpdateOneWithoutPositionsCreatedInput
-  Users: UserUpdateManyWithoutPositionsInput
-}
+# input PositionUpdateInput {
+#   code: ID
+#   name: String
+#   # CreatedBy: UserUpdateOneWithoutPositionsCreatedInput
+#   Users: UserUpdateManyWithoutPositionsInput
+# }
 
-input UserCreateManyWithoutPositionsInput {
-  # create: [UserCreateWithoutPositionsInput!]
-  connect: [UserWhereUniqueInput!]
-}
+# input UserCreateManyWithoutPositionsInput {
+#   # create: [UserCreateWithoutPositionsInput!]
+#   connect: [UserWhereUniqueInput!]
+# }
 
-input UserUpdateManyWithoutPositionsInput {
-  # create: [UserCreateWithoutPositionsInput!]
-  connect: [UserWhereUniqueInput!]
-  disconnect: [UserWhereUniqueInput!]
-  # delete: [UserWhereUniqueInput!]
-  # update: [UserUpdateWithWhereUniqueWithoutPositionsInput!]
-  # upsert: [UserUpsertWithWhereUniqueWithoutPositionsInput!]
-}
+# input UserUpdateManyWithoutPositionsInput {
+#   # create: [UserCreateWithoutPositionsInput!]
+#   connect: [UserWhereUniqueInput!]
+#   disconnect: [UserWhereUniqueInput!]
+#   # delete: [UserWhereUniqueInput!]
+#   # update: [UserUpdateWithWhereUniqueWithoutPositionsInput!]
+#   # upsert: [UserUpsertWithWhereUniqueWithoutPositionsInput!]
+# }

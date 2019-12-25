@@ -5,78 +5,78 @@ type TeamResponse{
   errors: [Error!]!
   data: Team
 }
-input TeamCreateInput {
-  name: String!
-  status: TeamStatus
-  Parent: TeamCreateOneWithoutChildsInput
-  Childs: TeamCreateManyWithoutParentInput
-  # CreatedBy: UserCreateOneWithoutTeamsCreatedInput!
-  # Members: TeamMemberCreateManyWithoutTeamInput
-  Projects: ProjectCreateManyWithoutTeamInput
-}
+# input TeamCreateInput {
+#   name: String!
+#   status: TeamStatus
+#   Parent: TeamCreateOneWithoutChildsInput
+#   Childs: TeamCreateManyWithoutParentInput
+#   # CreatedBy: UserCreateOneWithoutTeamsCreatedInput!
+#   # Members: TeamMemberCreateManyWithoutTeamInput
+#   Projects: ProjectCreateManyWithoutTeamInput
+# }
 
-input TeamUpdateInput {
-  name: String
-  status: TeamStatus
-  Parent: TeamUpdateOneWithoutChildsInput
-  Childs: TeamUpdateManyWithoutParentInput
-  # CreatedBy: UserUpdateOneWithoutTeamsCreatedInput
-  # Members: TeamMemberUpdateManyWithoutTeamInput
-  Projects: ProjectUpdateManyWithoutTeamInput
-}
+# input TeamUpdateInput {
+#   name: String
+#   status: TeamStatus
+#   Parent: TeamUpdateOneWithoutChildsInput
+#   Childs: TeamUpdateManyWithoutParentInput
+#   # CreatedBy: UserUpdateOneWithoutTeamsCreatedInput
+#   # Members: TeamMemberUpdateManyWithoutTeamInput
+#   Projects: ProjectUpdateManyWithoutTeamInput
+# }
 
-input TeamCreateOneWithoutChildsInput {
-  # create: TeamCreateWithoutChildsInput
-  connect: TeamWhereUniqueInput
-}
+# input TeamCreateOneWithoutChildsInput {
+#   # create: TeamCreateWithoutChildsInput
+#   connect: TeamWhereUniqueInput
+# }
 
-input TeamCreateManyWithoutParentInput {
-  # create: [TeamCreateWithoutParentInput!]
-  connect: [TeamWhereUniqueInput!]
-}
+# input TeamCreateManyWithoutParentInput {
+#   # create: [TeamCreateWithoutParentInput!]
+#   connect: [TeamWhereUniqueInput!]
+# }
 
-input  TeamMemberCreateManyWithoutTeamInput {
-  # create: [TeamMemberCreateWithoutTeamInput!]
-  connect: [TeamMemberWhereUniqueInput!]
-}
+# input  TeamMemberCreateManyWithoutTeamInput {
+#   # create: [TeamMemberCreateWithoutTeamInput!]
+#   connect: [TeamMemberWhereUniqueInput!]
+# }
 
-input ProjectCreateManyWithoutTeamInput {
-  # create: [ProjectCreateWithoutTeamInput!]
-  connect: [ProjectWhereUniqueInput!]
-}
+# input ProjectCreateManyWithoutTeamInput {
+#   # create: [ProjectCreateWithoutTeamInput!]
+#   connect: [ProjectWhereUniqueInput!]
+# }
 
-input TeamUpdateOneWithoutChildsInput {
-  # create: TeamCreateWithoutChildsInput
-  connect: TeamWhereUniqueInput
-  disconnect: Boolean
-  # delete: Boolean
-  # update: TeamUpdateWithoutChildsDataInput
-  # upsert: TeamUpsertWithoutChildsInput
-}
+# input TeamUpdateOneWithoutChildsInput {
+#   # create: TeamCreateWithoutChildsInput
+#   connect: TeamWhereUniqueInput
+#   disconnect: Boolean
+#   # delete: Boolean
+#   # update: TeamUpdateWithoutChildsDataInput
+#   # upsert: TeamUpsertWithoutChildsInput
+# }
 
-input TeamUpdateManyWithoutParentInput {
-  # create: [TeamCreateWithoutParentInput!]
-  connect: [TeamWhereUniqueInput!]
-  disconnect: [TeamWhereUniqueInput!]
-  # delete: [TeamWhereUniqueInput!]
-  # update: [TeamUpdateWithWhereUniqueWithoutParentInput!]
-  # upsert: [TeamUpsertWithWhereUniqueWithoutParentInput!]
-}
+# input TeamUpdateManyWithoutParentInput {
+#   # create: [TeamCreateWithoutParentInput!]
+#   connect: [TeamWhereUniqueInput!]
+#   disconnect: [TeamWhereUniqueInput!]
+#   # delete: [TeamWhereUniqueInput!]
+#   # update: [TeamUpdateWithWhereUniqueWithoutParentInput!]
+#   # upsert: [TeamUpsertWithWhereUniqueWithoutParentInput!]
+# }
 
-input TeamMemberUpdateManyWithoutTeamInput {
-  # create: [TeamMemberCreateWithoutTeamInput!]
-  connect: [TeamMemberWhereUniqueInput!]
-  disconnect: [TeamMemberWhereUniqueInput!]
-  # delete: [TeamMemberWhereUniqueInput!]
-  # update: [TeamMemberUpdateWithWhereUniqueWithoutTeamInput!]
-  # upsert: [TeamMemberUpsertWithWhereUniqueWithoutTeamInput!]
-}
+# input TeamMemberUpdateManyWithoutTeamInput {
+#   # create: [TeamMemberCreateWithoutTeamInput!]
+#   connect: [TeamMemberWhereUniqueInput!]
+#   disconnect: [TeamMemberWhereUniqueInput!]
+#   # delete: [TeamMemberWhereUniqueInput!]
+#   # update: [TeamMemberUpdateWithWhereUniqueWithoutTeamInput!]
+#   # upsert: [TeamMemberUpsertWithWhereUniqueWithoutTeamInput!]
+# }
 
-input ProjectUpdateManyWithoutTeamInput {
-  # create: [ProjectCreateWithoutTeamInput!]
-  connect: [ProjectWhereUniqueInput!]
-  disconnect: [ProjectWhereUniqueInput!]
-  # delete: [ProjectWhereUniqueInput!]
-  # update: [ProjectUpdateWithWhereUniqueWithoutTeamInput!]
-  # upsert: [ProjectUpsertWithWhereUniqueWithoutTeamInput!]
-}
+# input ProjectUpdateManyWithoutTeamInput {
+#   # create: [ProjectCreateWithoutTeamInput!]
+#   connect: [ProjectWhereUniqueInput!]
+#   disconnect: [ProjectWhereUniqueInput!]
+#   # delete: [ProjectWhereUniqueInput!]
+#   # update: [ProjectUpdateWithWhereUniqueWithoutTeamInput!]
+#   # upsert: [ProjectUpsertWithWhereUniqueWithoutTeamInput!]
+# }
