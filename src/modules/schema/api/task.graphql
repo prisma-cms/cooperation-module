@@ -26,6 +26,32 @@ type TaskResponse{
 #   Timers: TimerCreateManyWithoutTaskInput
 # }
 
+input TaskCreateInput {
+  id: ID
+  name: String!
+  description: String
+  content: Json
+  # status: TaskStatus
+  startDatePlaning: DateTime
+  endDatePlaning: DateTime
+  startDate: DateTime
+  endDate: DateTime
+
+  """
+    Custom field. Connect Project
+  """
+  Project: ProjectCreateOneWithoutProjectTasksInput!
+  # TaskProjects: ProjectTaskCreateManyWithoutTaskInput
+  # CreatedBy: UserCreateOneInput
+  Members: TaskMemberCreateManyWithoutTaskInput
+  Parent: TaskCreateOneWithoutChildsInput
+  Childs: TaskCreateManyWithoutParentInput
+  RelatedFrom: TaskCreateManyWithoutRelatedToInput
+  RelatedTo: TaskCreateManyWithoutRelatedFromInput
+  Timers: TimerCreateManyWithoutTaskInput
+  Reactions: TaskReactionCreateManyWithoutTaskInput
+  ChatRoom: ChatRoomCreateOneWithoutTaskInput
+}
 
 # input TaskUpdateInput {
 #   name: String

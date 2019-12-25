@@ -118,7 +118,7 @@ class Module extends PrismaModule {
     let apiSchema = super.getApiSchema(types.concat(baseSchema), [
       // "ProjectCreateInput",
       // "ProjectUpdateInput",
-      // "TaskCreateInput",
+      "TaskCreateInput",
       // "TaskUpdateInput",
       // "TimerCreateInput",
       // "TimerUpdateInput",

@@ -1,0 +1,10 @@
+
+type ProjectTask {
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  CreatedBy: User! @relation(name: "ProjectTaskCreatedBy")
+
+  Project: Project! @relation(name: "ProjectTaskProject")
+  Task: Task! @relation(name: "ProjectTaskTask")
+}

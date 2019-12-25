@@ -12,7 +12,9 @@ type Project {
   
   Members: [ProjectMember!]! @relation(name: "ProjectMemberProject")
   CreatedBy: User @relation(name: "ProjectCreatedBy")
-  Tasks: [Task!]! @relation(name: "ProjectTasks")
+  
+  # Tasks: [Task!]! @relation(name: "ProjectTasks")
+  ProjectTasks: [ProjectTask!]! @relation(name: "ProjectTaskProject" onDelete: CASCADE)
   
   """Команда-исполнитель"""
   Team: Team @relation(name: "TeamProjects")

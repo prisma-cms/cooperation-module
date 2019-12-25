@@ -1,5 +1,9 @@
 ===============================
 - Upgrade boilerplate
+- Breaking changes: Remove Task::Project
+- Added ProjectTask
+- Added Task::TaskProjects
+- Added Project::ProjectTasks
 
 1.7.2
 ===============================
