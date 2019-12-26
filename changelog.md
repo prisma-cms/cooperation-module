@@ -1,3 +1,4 @@
+1.8.0
 ===============================
 - Upgrade boilerplate
 - Breaking changes: Remove Task::Project
